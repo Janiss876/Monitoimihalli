@@ -7,8 +7,9 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    String a;'
+    String a;
     String b;
+    String c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
