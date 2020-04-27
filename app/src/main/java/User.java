@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class User {
@@ -9,6 +10,8 @@ public class User {
     private String phoneNumber;
     private String password;
 
+    ArrayList UserInfo = new ArrayList();
+
     public void login() {
         Scanner log = new Scanner(System.in);
         System.out.println("Enter email");
@@ -17,9 +20,10 @@ public class User {
         password = log.nextLine();
     }
     public void register() {
+
         Scanner reg = new Scanner(System.in);
         System.out.println("Firstname");
-        firstName = reg.nextLine();
+        UserInfo.add(firstName = reg.nextLine());
         System.out.println("Lastname");
         lastName = reg.nextLine();
         System.out.println("address");
