@@ -24,7 +24,7 @@ public class User {
         lastName = reg.nextLine();
         System.out.println("address");
         address = reg.nextLine();
-        System.out.println("Phonumber");
+        System.out.println("Phonenumber");
         phoneNumber = reg.nextLine();
         System.out.println("Password");
         password = reg.nextLine();
