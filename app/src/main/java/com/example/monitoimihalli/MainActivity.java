@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
     String b;
     String c;
     String f;
+    Moi jani
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
