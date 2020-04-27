@@ -10,7 +10,7 @@ public class User {
     private String phoneNumber;
     private String password;
 
-    ArrayList UserInfo = new ArrayList();
+
 
     public void login() {
         Scanner log = new Scanner(System.in);
@@ -20,10 +20,10 @@ public class User {
         password = log.nextLine();
     }
     public void register() {
-
+        ArrayList userList = new ArrayList();
         Scanner reg = new Scanner(System.in);
         System.out.println("Firstname");
-        UserInfo.add(firstName = reg.nextLine());
+        firstName = reg.nextLine();
         System.out.println("Lastname");
         lastName = reg.nextLine();
         System.out.println("address");
@@ -32,7 +32,6 @@ public class User {
         phoneNumber = reg.nextLine();
         System.out.println("Password");
         password = reg.nextLine();
-
     }
     }
 
