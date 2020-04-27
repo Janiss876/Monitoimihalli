@@ -16,4 +16,19 @@ public class User {
         System.out.println("Enter password");
         password = log.nextLine();
     }
+    public void register() {
+        Scanner reg = new Scanner(System.in);
+        System.out.println("Firstname");
+        firstName = reg.nextLine();
+        System.out.println("Lastname");
+        lastName = reg.nextLine();
+        System.out.println("address");
+        address = reg.nextLine();
+        System.out.println("Phonumber");
+        phoneNumber = reg.nextLine();
+        System.out.println("Password");
+        password = reg.nextLine();
+
     }
+    }
+
