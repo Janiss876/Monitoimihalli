@@ -5,11 +5,21 @@ public class User {
 
     private String firstName;
     private String lastName;
-    private String address;
+    private String userAddress;
     private String email;
     private String phoneNumber;
     private String password;
+    private ArrayList<User> user_array = new ArrayList<User>();
 
+public User(String fN, String lN, String a, String e, String phone, String pass) {
+    firstName = fN;
+    lastName = lN;
+    userAddress = a;
+    email = e;
+    phoneNumber = phone;
+    password = pass;
+    user_array.add()
+}
 
 
     public void login() {
@@ -27,7 +37,7 @@ public class User {
         System.out.println("Lastname");
         lastName = reg.nextLine();
         System.out.println("address");
-        address = reg.nextLine();
+        userAddress = reg.nextLine();
         System.out.println("Phonenumber");
         phoneNumber = reg.nextLine();
         System.out.println("Password");
