@@ -9,7 +9,6 @@ public class User {
     private String email;
     private String phoneNumber;
     private String password;
-    private ArrayList<User> user_array = new ArrayList<User>();
 
 public User(String fN, String lN, String a, String e, String phone, String pass) {
     firstName = fN;
@@ -18,7 +17,6 @@ public User(String fN, String lN, String a, String e, String phone, String pass)
     email = e;
     phoneNumber = phone;
     password = pass;
-    user_array.add()
 }
 
 

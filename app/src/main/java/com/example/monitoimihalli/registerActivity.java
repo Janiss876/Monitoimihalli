@@ -17,5 +17,6 @@ public class registerActivity extends AppCompatActivity {
     }
 
     public void newUser(String fN, String lN, String a, String e, String phone, String pass) {
+        user_array.add(new User(String fN, String lN, String a, String e, String phone, String pass));
     }
 }
