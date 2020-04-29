@@ -16,10 +16,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        registerButton = (Button) findViewById(registerButton);
+        registerButton = (Button) findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRegisterActivity();
+            }
+        });
     }
-
-    public void toRegisterActivity(View v) {
+    public void openRegisterActivity() {
         startActivity(new Intent(MainActivity.this, registerActivity.class));
     }
+
 }
