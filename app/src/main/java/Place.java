@@ -11,7 +11,7 @@ public class Place {
     public String getAddress() {
         return placeAddress;
     }
-    public void setName(String Name) {
+    public void setName(String Name){
 
     }
 
