@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class registerActivity extends AppCompatActivity {
 
     private ArrayList<User> user_array = new ArrayList<User>();
-    private String joku;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +17,12 @@ public class registerActivity extends AppCompatActivity {
     }
 
     public void newUser(String fN, String lN, String a, String e, String phone, String pass) {
-        user_array.add(new User(String fN, String lN, String a, String e, String phone, String pass));
+        fN = "";
+        lN = "";
+        a = "";
+        e = "";
+        phone = "";
+        pass = "";
+        user_array.add(new User(fN, lN, a, e, phone, pass));
     }
 }

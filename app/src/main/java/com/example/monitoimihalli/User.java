@@ -1,3 +1,5 @@
+package com.example.monitoimihalli;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
