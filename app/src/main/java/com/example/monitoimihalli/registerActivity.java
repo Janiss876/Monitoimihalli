@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class registerActivity extends AppCompatActivity {
 
     private ArrayList<User> user_array = new ArrayList<User>();
+    private String joku;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
