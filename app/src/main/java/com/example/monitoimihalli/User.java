@@ -8,7 +8,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String userAddress;
-    private String email;
+    private String emailAddress;
     private String phoneNumber;
     private String password;
 
@@ -16,7 +16,7 @@ public User(String fN, String lN, String a, String e, String phone, String pass)
     firstName = fN;
     lastName = lN;
     userAddress = a;
-    email = e;
+    emailAddress = e;
     phoneNumber = phone;
     password = pass;
 }
@@ -25,7 +25,7 @@ public User(String fN, String lN, String a, String e, String phone, String pass)
     public void login() {
         Scanner log = new Scanner(System.in);
         System.out.println("Enter email");
-        email = log.nextLine();
+        emailAddress = log.nextLine();
         System.out.println("Enter password");
         password = log.nextLine();
     }
@@ -44,7 +44,7 @@ public User(String fN, String lN, String a, String e, String phone, String pass)
         password = reg.nextLine();
     }
     public String getEmail() {
-        return email;
+        return emailAddress;
     }
 }
 
