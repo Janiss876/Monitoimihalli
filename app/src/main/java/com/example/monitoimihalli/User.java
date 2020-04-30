@@ -12,11 +12,11 @@ public class User {
     private String phoneNumber;
     private String password;
 
-public User(String fN, String lN, String a, String e, String phone, String pass) {
+public User(String fN, String lN, String addr, String email, String phone, String pass) {
     firstName = fN;
     lastName = lN;
-    userAddress = a;
-    emailAddress = e;
+    userAddress = addr;
+    emailAddress = email;
     phoneNumber = phone;
     password = pass;
 }
