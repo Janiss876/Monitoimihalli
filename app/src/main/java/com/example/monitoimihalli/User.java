@@ -43,5 +43,8 @@ public User(String fN, String lN, String a, String e, String phone, String pass)
         System.out.println("Password");
         password = reg.nextLine();
     }
+    public String getEmail() {
+        return email;
     }
+}
 
