@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,8 +24,6 @@ public class registerActivity extends AppCompatActivity {
     EditText phoneText;
     EditText passwordText;
     TextView existingEmail;
-
-    private ArrayList<User> user_array = new ArrayList<User>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,13 @@ public class registerActivity extends AppCompatActivity {
                 openMainActivity();
             }
         });
+        emailText.addTextChangedListener(registerTextWatcher);
+        lastNameText.addTextChangedListener(registerTextWatcher);
+        firstNameText.addTextChangedListener(registerTextWatcher);
+        userAddressText.addTextChangedListener(registerTextWatcher);
+        phoneText.addTextChangedListener(registerTextWatcher);
+        passwordText.addTextChangedListener(registerTextWatcher);
+
     }
 
     public void openMainActivity() {
@@ -58,8 +65,8 @@ public class registerActivity extends AppCompatActivity {
     }
 
     public void newUser() {
-        String fN = lastNameText.getText().toString();
-        String lN = firstNameText.getText().toString();
+        String fN = firstNameText.getText().toString();
+        String lN = lastNameText.getText().toString();
         String a = userAddressText.getText().toString();
         String e = emailText.getText().toString();
         String phone = phoneText.getText().toString();
@@ -81,7 +88,30 @@ public class registerActivity extends AppCompatActivity {
             existingEmail.setText("Added");
             //openMainActivity();
         }*/
-        user_array.add(new User(fN, lN, a, e, phone, pass));
+        User.user_array.add(new User(fN, lN, a, e, phone, pass));
         openMainActivity();
     }
+    private TextWatcher registerTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String f = firstNameText.getText().toString();
+            String l = lastNameText.getText().toString();
+            String a = userAddressText.getText().toString();
+            String e = emailText.getText().toString();
+            String ph = phoneText.getText().toString();
+            String pa = passwordText.getText().toString();
+
+            registerButton.setEnabled(!f.isEmpty() && !l.isEmpty() && !f.isEmpty() && !a.isEmpty() && !e.isEmpty() && !ph.isEmpty() && !pa.isEmpty());
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 }

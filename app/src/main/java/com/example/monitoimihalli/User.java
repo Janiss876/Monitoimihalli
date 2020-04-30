@@ -11,6 +11,7 @@ public class User {
     private String emailAddress;
     private String phoneNumber;
     private String password;
+    public static ArrayList<User> user_array = new ArrayList<User>();
 
 public User(String fN, String lN, String addr, String email, String phone, String pass) {
     firstName = fN;
@@ -25,6 +26,9 @@ public User(String fN, String lN, String addr, String email, String phone, Strin
 
     public String getEmail() {
         return emailAddress;
+    }
+    public String getPassword() {
+    return password;
     }
 }
 
