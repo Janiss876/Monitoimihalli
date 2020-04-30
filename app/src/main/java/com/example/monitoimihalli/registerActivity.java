@@ -64,6 +64,7 @@ public class registerActivity extends AppCompatActivity {
         String e = emailText.getText().toString();
         String phone = phoneText.getText().toString();
         String pass = passwordText.getText().toString();
+        /*
         if (user_array.size() > 0) {
             for (int i = 0; i < user_array.size(); i++) {
                 if (e.equals(user_array.get(i).getEmail())) {
@@ -79,6 +80,8 @@ public class registerActivity extends AppCompatActivity {
             user_array.add(new User(fN, lN, a, e, phone, pass));
             existingEmail.setText("Added");
             //openMainActivity();
-        }
+        }*/
+        user_array.add(new User(fN, lN, a, e, phone, pass));
+        openMainActivity();
     }
 }
