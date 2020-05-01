@@ -1,3 +1,5 @@
+package com.example.monitoimihalli;
+
 public class Place {
     private String placeAddress;
     private String Name;

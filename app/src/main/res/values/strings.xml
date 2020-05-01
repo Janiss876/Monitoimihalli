@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Monitoimihalli</string>
+
+    <string-array name="place">
+        <item>Halli</item>
+    </string-array>
 </resources>
