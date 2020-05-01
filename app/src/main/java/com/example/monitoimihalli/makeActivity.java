@@ -24,8 +24,14 @@ public class makeActivity extends AppCompatActivity implements AdapterView.OnIte
         Spinner spinnersport  = findViewById(R.id.spinnersport);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.sport, android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerplace.setAdapter(adapter1);
-        spinnerplace.setOnItemSelectedListener(this);
+        spinnersport.setAdapter(adapter1);
+        spinnersport.setOnItemSelectedListener(this);
+
+        Spinner spinnerroom  = findViewById(R.id.spinnerroom);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.room, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerroom.setAdapter(adapter2);
+        spinnerroom.setOnItemSelectedListener(this);
     }
 
 

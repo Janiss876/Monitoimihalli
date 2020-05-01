@@ -2,7 +2,7 @@
     <string name="app_name">Monitoimihalli</string>
 
     <string-array name="place">
-        <item>Halli</item>
+        <item>Sports Hall</item>
     </string-array>
     <string-array name="sport">
         <item>Floorball</item>
