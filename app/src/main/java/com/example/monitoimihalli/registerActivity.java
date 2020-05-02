@@ -24,6 +24,7 @@ public class registerActivity extends AppCompatActivity {
     EditText phoneText;
     EditText passwordText;
     TextView existingEmail;
+    User user = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,25 +72,12 @@ public class registerActivity extends AppCompatActivity {
         String e = emailText.getText().toString();
         String phone = phoneText.getText().toString();
         String pass = passwordText.getText().toString();
-        /*
-        if (user_array.size() > 0) {
-            for (int i = 0; i < user_array.size(); i++) {
-                if (e.equals(user_array.get(i).getEmail())) {
-                    existingEmail.setText("The email is already in use");
-                    break;
-                } else if (i == user_array.size() - 1) {
-                    user_array.add(new User(fN, lN, a, e, phone, pass));
-                    existingEmail.setText("Added2");
-                    //openMainActivity();
-                }
-            }
+        if (user.checkEmail(e)) {
+            existingEmail.setText("The email is already in use");
         } else {
-            user_array.add(new User(fN, lN, a, e, phone, pass));
-            existingEmail.setText("Added");
-            //openMainActivity();
-        }*/
-        User.user_array.add(new User(fN, lN, a, e, phone, pass));
-        openMainActivity();
+            User.user_array.add(new User(fN, lN, a, e, phone, pass));
+            openMainActivity();
+        }
     }
     private TextWatcher registerTextWatcher = new TextWatcher() {
         @Override

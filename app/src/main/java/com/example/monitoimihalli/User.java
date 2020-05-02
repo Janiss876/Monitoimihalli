@@ -13,14 +13,18 @@ public class User {
     private String password;
     public static ArrayList<User> user_array = new ArrayList<User>();
 
-public User(String fN, String lN, String addr, String email, String phone, String pass) {
-    firstName = fN;
-    lastName = lN;
-    userAddress = addr;
-    emailAddress = email;
-    phoneNumber = phone;
-    password = pass;
-}
+    public User(String fN, String lN, String addr, String email, String phone, String pass) {
+        firstName = fN;
+        lastName = lN;
+        userAddress = addr;
+        emailAddress = email;
+        phoneNumber = phone;
+        password = pass;
+    }
+
+    public User() {
+
+    }
 
 
 
@@ -29,6 +33,15 @@ public User(String fN, String lN, String addr, String email, String phone, Strin
     }
     public String getPassword() {
     return password;
+    }
+
+    public boolean checkEmail(String em) {
+        for (User u : user_array) {
+            if (u.emailAddress.equals(em)){
+                return true;
+            }
+        }
+        return false;
     }
 }
 
