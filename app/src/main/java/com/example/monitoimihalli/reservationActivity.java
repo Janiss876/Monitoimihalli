@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class reservationActivity extends AppCompatActivity {
     Button makeReservationButton;
-    Button checkReservations;
+    Button checkReservationsButton;
 
 
     @Override
