@@ -1,7 +1,5 @@
 package com.example.monitoimihalli;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class registerActivity extends AppCompatActivity {
 
@@ -25,11 +23,14 @@ public class registerActivity extends AppCompatActivity {
     EditText passwordText;
     TextView existingEmail;
     User user = new User();
+    registerActivity context = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        context = registerActivity.this;
         cancelButton = (Button) findViewById(R.id.cancelRegisterButton);
         registerButton = (Button) findViewById(R.id.confirmRegisterButton);
         lastNameText = (EditText) findViewById(R.id.lastNameText);
@@ -66,6 +67,7 @@ public class registerActivity extends AppCompatActivity {
     }
 
     public void newUser() {
+        FileClass fileClass = new FileClass(this);
         String fN = firstNameText.getText().toString();
         String lN = lastNameText.getText().toString();
         String a = userAddressText.getText().toString();
@@ -76,7 +78,9 @@ public class registerActivity extends AppCompatActivity {
             existingEmail.setText("The email is already in use");
         } else {
             User.user_array.add(new User(fN, lN, a, e, phone, pass));
-            openMainActivity();
+            fileClass.FileWrite(fN, lN, a, e, phone, pass);
+
+            //openMainActivity();
         }
     }
     private TextWatcher registerTextWatcher = new TextWatcher() {
@@ -93,7 +97,6 @@ public class registerActivity extends AppCompatActivity {
             String e = emailText.getText().toString();
             String ph = phoneText.getText().toString();
             String pa = passwordText.getText().toString();
-
             registerButton.setEnabled(!f.isEmpty() && !l.isEmpty() && !f.isEmpty() && !a.isEmpty() && !e.isEmpty() && !ph.isEmpty() && !pa.isEmpty());
         }
 
