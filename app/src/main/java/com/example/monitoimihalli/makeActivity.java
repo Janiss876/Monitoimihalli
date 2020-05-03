@@ -54,9 +54,8 @@ public class makeActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
         chooseDate.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 c = Calendar.getInstance();
                 int day = c.get(Calendar.DAY_OF_MONTH);
                 int month = c.get(Calendar.MONTH);
@@ -64,11 +63,11 @@ public class makeActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 dtp = new DatePickerDialog(makeActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
-                        chosenDate.setText(mDay + "/" + (mMonth + 1) + "/" + mYear);
+                    public void onDateSet(DatePicker datePicker, int Year, int Month, int Day) {
+                        chosenDate.setText(Day + "/" + (Month + 1) + "/" + Year);
                     }
                 }, day, month, year);
-
+                dtp.show();
 
             }
         });
