@@ -6,20 +6,23 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 
 public class FileClass {
-    private File userFile;
-    private String userHeader;
+    ;
     private Context context;
+    private File userFile;
+    private String userFileName;
 
     public FileClass(Context con) {
         context = con.getApplicationContext();
-        userFile = new File("userfile.csv");
-        userHeader = "first Name,last name,address,email,phone number,password\n";
+
     }
 
     public void FileWrite(String fN, String lN, String a, String e, String ph, String pa) {
             try {
-                OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput(String.valueOf(userFile), Context.MODE_APPEND));
+                userFile = new File(context.getFilesDir() + "/userfile.csv");
+                userFileName = "userfile.csv";
+                OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput(userFileName, Context.MODE_APPEND));
                 if (!userFile.exists() || userFile.length() == 0) {
+                    String userHeader = "first Name,last name,address,email,phone number,password\n";
                     osw.write(userHeader);
                 }
                 osw.write(fN + ",");
@@ -29,7 +32,6 @@ public class FileClass {
                 osw.write(ph + ",");
                 osw.write(pa + "\n");
                 osw.close();
-                System.out.print(userFile.length());
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

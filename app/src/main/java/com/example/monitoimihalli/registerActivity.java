@@ -79,8 +79,7 @@ public class registerActivity extends AppCompatActivity {
         } else {
             User.user_array.add(new User(fN, lN, a, e, phone, pass));
             fileClass.FileWrite(fN, lN, a, e, phone, pass);
-
-            //openMainActivity();
+            openMainActivity();
         }
     }
     private TextWatcher registerTextWatcher = new TextWatcher() {
