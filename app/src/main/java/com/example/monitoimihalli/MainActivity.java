@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     EditText loginEmail;
     EditText loginPassword;
     TextView wrongText;
-    public static User activeUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         loginEmail = (EditText) findViewById(R.id.loginEmail);
         loginPassword = (EditText) findViewById(R.id.loginPassword);
         wrongText = (TextView) findViewById(R.id.wrongText);
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,16 +45,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, registerActivity.class));
     }
     public void openReservationActivity() {
-        for (int i = 0; i < User.user_array.size(); i++) {
-            if (loginEmail.getText().toString().equals(User.user_array.get(i).getEmail()) && loginPassword.getText().toString().equals(User.user_array.get(i).getPassword())) {
-                activeUser = User.user_array.get(i);
-                startActivity(new Intent(MainActivity.this, reservationActivity.class));
-                break;
+        User user = new User();
+        if (user.loginCheck(loginEmail.getText().toString(), loginPassword.getText().toString())) {
+            startActivity(new Intent(MainActivity.this, reservationActivity.class));
             }
-            else if (i == User.user_array.size() - 1) {
+            else {
                 wrongText.setText("Wrong email and/or password");
             }
 
-        }
     }
 }
