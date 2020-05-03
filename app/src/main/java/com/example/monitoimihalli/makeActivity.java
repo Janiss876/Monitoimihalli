@@ -19,7 +19,7 @@ import org.w3c.dom.Text;
 import java.util.Calendar;
 
 public class makeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    Calendar c;
+
     Button chooseDate;
     DatePickerDialog dtp;
     TextView chosenDate;
@@ -56,17 +56,19 @@ public class makeActivity extends AppCompatActivity implements AdapterView.OnIte
         chooseDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                c = Calendar.getInstance();
+                Calendar c = Calendar.getInstance();
                 int day = c.get(Calendar.DAY_OF_MONTH);
                 int month = c.get(Calendar.MONTH);
                 int year = c.get(Calendar.YEAR);
 
+
+
                 dtp = new DatePickerDialog(makeActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker datePicker, int Year, int Month, int Day) {
-                        chosenDate.setText(Day + "/" + (Month + 1) + "/" + Year);
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        chosenDate.setText(day + "/" + (month + 1) + "/" + year);
                     }
-                }, day, month, year);
+                }, year, month, day);
                 dtp.show();
 
             }
