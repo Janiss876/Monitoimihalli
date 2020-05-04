@@ -39,7 +39,7 @@ public class registerActivity extends AppCompatActivity {
         emailText = (EditText) findViewById(R.id.emailText);
         phoneText = (EditText) findViewById(R.id.phoneText);
         passwordText = (EditText) findViewById(R.id.passwordText);
-        existingEmail = (TextView) findViewById(R.id.usedEmailText);
+        existingEmail = (TextView) findViewById(R.id.warninglText);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +78,7 @@ public class registerActivity extends AppCompatActivity {
             existingEmail.setText("The email is already in use");
         } else {
             User.user_array.add(new User(fN, lN, a, e, phone, pass));
-            fileClass.FileWrite(fN, lN, a, e, phone, pass);
+            fileClass.FileWrite();
             openMainActivity();
         }
     }

@@ -1,7 +1,6 @@
 package com.example.monitoimihalli;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class User {
 
@@ -36,6 +35,22 @@ public class User {
         return password;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAddress() {
+        return userAddress;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
     public boolean checkEmail(String em) {
         for (User u : user_array) {
             if (u.emailAddress.equals(em)) {
@@ -53,5 +68,14 @@ public class User {
             }
         }
         return false;
+    }
+
+    public void detailChange(String fN, String lN, String addr, String email, String phone, String pass) {
+        activeUser.firstName = fN;
+        activeUser.lastName = lN;
+        activeUser.userAddress = addr;
+        activeUser.emailAddress = email;
+        activeUser.phoneNumber = phone;
+        activeUser.password = pass;
     }
 }

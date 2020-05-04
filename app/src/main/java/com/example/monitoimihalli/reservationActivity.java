@@ -10,6 +10,7 @@ import android.widget.Button;
 public class reservationActivity extends AppCompatActivity {
     Button makeReservationButton;
     Button checkReservationsButton;
+    Button editButton;
 
 
     @Override
@@ -17,6 +18,7 @@ public class reservationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
         makeReservationButton = (Button) findViewById(R.id.makeReservation);
+        editButton = (Button) findViewById(R.id.editButton);
         makeReservationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,8 +26,17 @@ public class reservationActivity extends AppCompatActivity {
             }
 
         });
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDetailsActivity();
+            }
+        });
     }
 
+    public void openDetailsActivity() {
+        startActivity(new Intent(reservationActivity.this, AccountDetailsActivity.class));
+    }
 
     public void openMakeActivity() {
         startActivity(new Intent(reservationActivity.this, makeActivity.class));

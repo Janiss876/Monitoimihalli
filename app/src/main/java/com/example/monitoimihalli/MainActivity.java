@@ -16,12 +16,15 @@ public class MainActivity extends AppCompatActivity {
     EditText loginEmail;
     EditText loginPassword;
     TextView wrongText;
-
+    MainActivity context = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = MainActivity.this;
+        FileClass file = new FileClass(context);
+        file.fileRead();
         loginButton = (Button) findViewById(R.id.loginButton);
         registerButton = (Button) findViewById(R.id.registerButton);
         loginEmail = (EditText) findViewById(R.id.loginEmail);
@@ -33,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
                 openReservationActivity();
             }
         });
-
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
