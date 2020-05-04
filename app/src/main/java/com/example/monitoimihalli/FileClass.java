@@ -53,7 +53,7 @@ public class FileClass {
                 ex.printStackTrace();
         }
     }
-    public void FilWriteReservation() {
+    public void FileWriteReservation() {
         try {
             fileName = "reservationfile.csv";
             String userHeader = "place,sport,room,date,hours\n";

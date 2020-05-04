@@ -19,6 +19,10 @@ public class Reservation {
         sport = s;
     }
 
+    public Reservation() {
+
+    }
+
     public boolean reservationCheck(String dt, String hs) {
         for (int i = 0; i < reservations.size(); i++) {
             if (dt.equals(reservations.get(i).getDate()) && hs.equals(reservations.get(i).getHours())) {
