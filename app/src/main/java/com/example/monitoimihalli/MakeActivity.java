@@ -1,8 +1,12 @@
 package com.example.monitoimihalli;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,10 +18,11 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class MakeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MakeActivity extends AppCompatActivity {
 
     Button chooseDate;
     Button confirmReservation;
+    Button cancelButton;
     DatePickerDialog dtp;
     TextView chosenDate;
     Spinner spinnerplace;
@@ -27,43 +32,82 @@ public class MakeActivity extends AppCompatActivity implements AdapterView.OnIte
     TextView warningText;
     MakeActivity context = null;
     Reservation reservation = new Reservation();
+    String place;
+    String sport;
+    String room;
+    String hours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make);
         context = MakeActivity.this;
+        cancelButton = (Button) findViewById(R.id.CancelReservation);
+        warningText = (TextView) findViewById(R.id.reservationWarningText);
+        chooseDate = (Button) findViewById(R.id.ChooseDateButton);
+        chosenDate = (TextView) findViewById(R.id.chosenDate);
+        chosenDate.addTextChangedListener(makeTextWatcher);
+        confirmReservation = (Button) findViewById((R.id.ConfirmReservation));
+
         Spinner spinnerplace = findViewById(R.id.spinnerplace);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.place, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerplace.setAdapter(adapter);
-        spinnerplace.setOnItemSelectedListener(this);
-        spinnerplace.getOnItemSelectedListener().toString();
+        spinnerplace.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                place = parent.getItemAtPosition(position).toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         Spinner spinnersport = findViewById(R.id.spinnersport);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.sport, android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnersport.setAdapter(adapter1);
-        spinnersport.setOnItemSelectedListener(this);
+        spinnersport.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                sport = parent.getItemAtPosition(position).toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         Spinner spinnerroom = findViewById(R.id.spinnerroom);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.room, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerroom.setAdapter(adapter2);
-        spinnerroom.setOnItemSelectedListener(this);
+        spinnerroom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                room = parent.getItemAtPosition(position).toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         Spinner spinnerhours = findViewById(R.id.spinnerhours);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.hours, android.R.layout.simple_spinner_item);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerhours.setAdapter(adapter3);
-        spinnerhours.setOnItemSelectedListener(this);
+        spinnerhours.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                hours = parent.getItemAtPosition(position).toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-
-
-        warningText = (TextView) findViewById(R.id.reservationWarningText);
-        chooseDate = (Button) findViewById(R.id.ChooseDateButton);
-        chosenDate = (TextView) findViewById(R.id.chosenDate);
-        confirmReservation = (Button) findViewById((R.id.ConfirmReservation));
+            }
+        });
 
         confirmReservation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,8 +124,6 @@ public class MakeActivity extends AppCompatActivity implements AdapterView.OnIte
                 int month = c.get(Calendar.MONTH);
                 int year = c.get(Calendar.YEAR);
 
-
-
                 dtp = new DatePickerDialog(MakeActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -93,8 +135,15 @@ public class MakeActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openReservationActivity();
+            }
+        });
 
-    }
+
+    }/**
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -105,14 +154,14 @@ public class MakeActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-    }
+    }**/
 
     public void makeNewReservation() {
         FileClass fileClass = new FileClass(this);
-        String pl = spinnerplace.getOnItemClickListener().toString();
-        String sp = spinnersport.getOnItemClickListener().toString();
-        String rm = spinnerroom.getOnItemClickListener().toString();
-        String hs = spinnerhours.getOnItemClickListener().toString();
+        String pl = place;
+        String sp = sport;
+        String rm = room;
+        String hs = hours;
         String dt = chosenDate.getText().toString();
         String fn = User.activeUser.getFirstName();
         String ln = User.activeUser.getLastName();
@@ -122,8 +171,30 @@ public class MakeActivity extends AppCompatActivity implements AdapterView.OnIte
         } else {
             Reservation.reservations.add(new Reservation(rm, pl, dt, hs, sp, fn, ln, em));
             fileClass.FileWriteReservation();
+            openReservationActivity();
+
         }
 
     }
+
+    public void openReservationActivity() {
+        startActivity(new Intent(MakeActivity.this, ReservationActivity.class));
+    }
+
+    private TextWatcher makeTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            confirmReservation.setEnabled(!chosenDate.getText().toString().equals(("Chosen date")));
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 }
-    String r, String p, String d, String h, String s
