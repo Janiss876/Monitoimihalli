@@ -23,9 +23,9 @@ public class Reservation {
 
     }
 
-    public boolean reservationCheck(String dt, String hs) {
+    public boolean reservationCheck(String dt, String hs, String rm) {
         for (int i = 0; i < reservations.size(); i++) {
-            if (dt.equals(reservations.get(i).getDate()) && hs.equals(reservations.get(i).getHours())) {
+            if (dt.equals(reservations.get(i).getDate()) && hs.equals(reservations.get(i).getHours()) && rm.equals(reservations.get(i).getRoomNumber())) {
                 return true;
             }
         }

@@ -27,6 +27,8 @@ public class makeActivity extends AppCompatActivity implements AdapterView.OnIte
     Spinner spinnersport;
     Spinner spinnerroom;
     Spinner spinnerhours;
+    TextView warningText;
+    Reservation reservation = new Reservation();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +62,7 @@ public class makeActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
 
-
+        warningText = (TextView) findViewById(R.id.reservationWarningText);
         chooseDate = (Button) findViewById(R.id.ChooseDateButton);
         chosenDate = (TextView) findViewById(R.id.chosenDate);
 
@@ -99,4 +101,19 @@ public class makeActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    public void makeNewReservation() {
+        String pl = spinnerplace.getOnItemClickListener().toString();
+        String sp = spinnersport.getOnItemClickListener().toString();
+        String rm = spinnerroom.getOnItemClickListener().toString();
+        String hs = spinnerhours.getOnItemClickListener().toString();
+        String dt = chooseDate.getText().toString();
+        if (reservation.reservationCheck(dt, hs, rm)) {
+            warningText.setText("Room, date and hours already reserved, select another room/date/hours");
+        } else {
+            Reservation.reservations.add(new Reservation(rm, pl, dt, hs, sp));
+        }
+
+    }
 }
+    String r, String p, String d, String h, String s
