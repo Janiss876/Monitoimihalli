@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = MainActivity.this;
         FileClass file = new FileClass(context);
-        file.fileRead();
+        file.fileReadUser();
+        file.fileReadReservation();
         loginButton = (Button) findViewById(R.id.loginButton);
         registerButton = (Button) findViewById(R.id.registerButton);
         loginEmail = (EditText) findViewById(R.id.loginEmail);
@@ -44,12 +45,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void openRegisterActivity() {
-        startActivity(new Intent(MainActivity.this, registerActivity.class));
+        startActivity(new Intent(MainActivity.this, RegisterActivity.class));
     }
     public void openReservationActivity() {
         User user = new User();
         if (user.loginCheck(loginEmail.getText().toString(), loginPassword.getText().toString())) {
-            startActivity(new Intent(MainActivity.this, reservationActivity.class));
+            startActivity(new Intent(MainActivity.this, ReservationActivity.class));
             }
             else {
                 wrongText.setText("Wrong email and/or password");

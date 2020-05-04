@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class registerActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     Button registerButton;
     Button cancelButton;
@@ -23,14 +23,14 @@ public class registerActivity extends AppCompatActivity {
     EditText passwordText;
     TextView existingEmail;
     User user = new User();
-    registerActivity context = null;
+    RegisterActivity context = null;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        context = registerActivity.this;
+        context = RegisterActivity.this;
         cancelButton = (Button) findViewById(R.id.cancelRegisterButton);
         registerButton = (Button) findViewById(R.id.confirmRegisterButton);
         lastNameText = (EditText) findViewById(R.id.lastNameText);
@@ -63,7 +63,7 @@ public class registerActivity extends AppCompatActivity {
     }
 
     public void openMainActivity() {
-        startActivity(new Intent(registerActivity.this, MainActivity.class));
+        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
     }
 
     public void newUser() {
@@ -78,7 +78,7 @@ public class registerActivity extends AppCompatActivity {
             existingEmail.setText("The email is already in use");
         } else {
             User.user_array.add(new User(fN, lN, a, e, phone, pass));
-            fileClass.FileWrite();
+            fileClass.FileWriteUser();
             openMainActivity();
         }
     }

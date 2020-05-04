@@ -1,9 +1,7 @@
 package com.example.monitoimihalli;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,13 +12,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.Calendar;
 
-public class makeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MakeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Button chooseDate;
+    Button confirmReservation;
     DatePickerDialog dtp;
     TextView chosenDate;
     Spinner spinnerplace;
@@ -28,13 +25,14 @@ public class makeActivity extends AppCompatActivity implements AdapterView.OnIte
     Spinner spinnerroom;
     Spinner spinnerhours;
     TextView warningText;
+    MakeActivity context = null;
     Reservation reservation = new Reservation();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make);
-
+        context = MakeActivity.this;
         Spinner spinnerplace = findViewById(R.id.spinnerplace);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.place, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -65,7 +63,14 @@ public class makeActivity extends AppCompatActivity implements AdapterView.OnIte
         warningText = (TextView) findViewById(R.id.reservationWarningText);
         chooseDate = (Button) findViewById(R.id.ChooseDateButton);
         chosenDate = (TextView) findViewById(R.id.chosenDate);
+        confirmReservation = (Button) findViewById((R.id.ConfirmReservation));
 
+        confirmReservation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeNewReservation();
+            }
+        });
 
         chooseDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +82,7 @@ public class makeActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
 
-                dtp = new DatePickerDialog(makeActivity.this, new DatePickerDialog.OnDateSetListener() {
+                dtp = new DatePickerDialog(MakeActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         chosenDate.setText(day + "/" + (month + 1) + "/" + year);
@@ -103,15 +108,20 @@ public class makeActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void makeNewReservation() {
+        FileClass fileClass = new FileClass(this);
         String pl = spinnerplace.getOnItemClickListener().toString();
         String sp = spinnersport.getOnItemClickListener().toString();
         String rm = spinnerroom.getOnItemClickListener().toString();
         String hs = spinnerhours.getOnItemClickListener().toString();
-        String dt = chooseDate.getText().toString();
+        String dt = chosenDate.getText().toString();
+        String fn = User.activeUser.getFirstName();
+        String ln = User.activeUser.getLastName();
+        String em = User.activeUser.getEmail();
         if (reservation.reservationCheck(dt, hs, rm)) {
             warningText.setText("Room, date and hours already reserved, select another room/date/hours");
         } else {
-            Reservation.reservations.add(new Reservation(rm, pl, dt, hs, sp));
+            Reservation.reservations.add(new Reservation(rm, pl, dt, hs, sp, fn, ln, em));
+            fileClass.FileWriteReservation();
         }
 
     }

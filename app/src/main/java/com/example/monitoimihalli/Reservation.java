@@ -9,14 +9,21 @@ public class Reservation {
     private String date;
     private String hours;
     private String sport;
-    public static ArrayList<Reservation> reservations = new ArrayList<Reservation>();
+    private String firstName;
+    private String lastName;
+    private String email;
 
-    public Reservation(String r, String p, String d, String h, String s) {
+    public static ArrayList<Reservation> reservations = new ArrayList<>();
+
+    public Reservation(String r, String p, String d, String h, String s, String f, String l, String e) {
         roomNumber = r;
         place = p;
         date = d;
         hours = h;
         sport = s;
+        firstName = f;
+        lastName = l;
+        email = e;
     }
 
     public Reservation() {
@@ -50,6 +57,18 @@ public class Reservation {
 
     public String getSport() {
         return sport;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void editReservation() {

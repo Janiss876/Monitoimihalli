@@ -69,7 +69,7 @@ public class AccountDetailsActivity extends AppCompatActivity {
     }
 
     public void openReservationActivity() {
-        startActivity(new Intent(AccountDetailsActivity.this, reservationActivity.class));
+        startActivity(new Intent(AccountDetailsActivity.this, ReservationActivity.class));
     }
 
     public void editUser() {
@@ -84,7 +84,7 @@ public class AccountDetailsActivity extends AppCompatActivity {
             warningText.setText("The email is already in use");
         } else {
             user.detailChange(fN, lN, a, e, phone, pass);
-            fileClass.FileWrite();
+            fileClass.FileWriteUser();
             openReservationActivity();
         }
     }

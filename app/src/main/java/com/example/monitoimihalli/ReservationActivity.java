@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class reservationActivity extends AppCompatActivity {
+public class ReservationActivity extends AppCompatActivity {
     Button makeReservationButton;
     Button checkReservationsButton;
     Button editButton;
@@ -50,18 +50,18 @@ public class reservationActivity extends AppCompatActivity {
     }
 
     public void openDetailsActivity() {
-        startActivity(new Intent(reservationActivity.this, AccountDetailsActivity.class));
+        startActivity(new Intent(ReservationActivity.this, AccountDetailsActivity.class));
     }
 
     public void openMakeActivity() {
-        startActivity(new Intent(reservationActivity.this, makeActivity.class));
+        startActivity(new Intent(ReservationActivity.this, MakeActivity.class));
     }
 
     public void logOut() {
         User.activeUser = null;
-        startActivity(new Intent(reservationActivity.this, MainActivity.class));
+        startActivity(new Intent(ReservationActivity.this, MainActivity.class));
     }
     public void opencheckReservations() {
-        startActivity(new Intent(reservationActivity.this, checkReservations.class));
+        startActivity(new Intent(ReservationActivity.this, CheckReservationsActivity.class));
     }
 }
