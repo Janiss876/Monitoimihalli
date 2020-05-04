@@ -53,5 +53,24 @@ public class FileClass {
                 ex.printStackTrace();
         }
     }
+    public void FilWriteReservation() {
+        try {
+            fileName = "reservationfile.csv";
+            String userHeader = "first Name,last name,address,email,phone number,password\n";
+            OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput(fileName, Context.MODE_PRIVATE));
+            osw.write(userHeader);
+            for (User u : User.user_array) {
+                osw.write(u.getFirstName() + ",");
+                osw.write(u.getLastName() + ",");
+                osw.write(u.getAddress() + ",");
+                osw.write(u.getEmail() + ",");
+                osw.write(u.getPhoneNumber() + ",");
+                osw.write(u.getPassword() + "\n");
+            }
+            osw.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
 
