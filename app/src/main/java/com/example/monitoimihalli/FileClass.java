@@ -56,7 +56,7 @@ public class FileClass {
     public void FilWriteReservation() {
         try {
             fileName = "reservationfile.csv";
-            String userHeader = "first Name,last name,address,email,phone number,password\n";
+            String userHeader = "place,sport,room,date,hours\n";
             OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput(fileName, Context.MODE_PRIVATE));
             osw.write(userHeader);
             for (User u : User.user_array) {

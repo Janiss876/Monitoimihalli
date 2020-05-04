@@ -21,6 +21,7 @@ public class reservationActivity extends AppCompatActivity {
         makeReservationButton = (Button) findViewById(R.id.makeReservation);
         editButton = (Button) findViewById(R.id.editButton);
         logOutButton = (Button) findViewById(R.id.logOutButton);
+        checkReservationsButton = (Button) findViewById(R.id.checkReservations);
 
         makeReservationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,12 @@ public class reservationActivity extends AppCompatActivity {
                 logOut();
             }
         });
+        checkReservationsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                opencheckReservations();
+            }
+        });
     }
 
     public void openDetailsActivity() {
@@ -53,5 +60,8 @@ public class reservationActivity extends AppCompatActivity {
     public void logOut() {
         User.activeUser = null;
         startActivity(new Intent(reservationActivity.this, MainActivity.class));
+    }
+    public void opencheckReservations() {
+        startActivity(new Intent(reservationActivity.this, checkReservations.class));
     }
 }

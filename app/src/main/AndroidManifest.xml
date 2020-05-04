@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".checkReservations"></activity>
         <activity android:name=".AccountDetailsActivity"></activity>
         <activity android:name=".makeActivity" />
         <activity android:name=".reservationActivity" />
