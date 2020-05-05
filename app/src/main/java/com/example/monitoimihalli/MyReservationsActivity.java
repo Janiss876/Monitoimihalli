@@ -20,6 +20,6 @@ public class MyReservationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_myreservations);
         edit = (Button) findViewById(R.id.editMyReservation);
         myReservationsText = (TextView) findViewById(R.id.myReservationsText);
-        spinnermyreservation =(Spinner) findViewById(R.id.spinnermyreservation);
+        spinnermyreservation = (Spinner) findViewById(R.id.spinnermyreservation);
     }
 }
