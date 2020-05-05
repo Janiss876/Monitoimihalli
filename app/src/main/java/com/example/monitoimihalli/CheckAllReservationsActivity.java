@@ -63,8 +63,6 @@ public class CheckAllReservationsActivity extends AppCompatActivity {
             }
         });
             }
-
-
 }
 
 

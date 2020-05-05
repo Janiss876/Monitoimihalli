@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
         if (user.checkEmail(e)) {
             existingEmail.setText("The email is already in use");
         } else {
-            User.user_array.add(new User(fN, lN, a, e, phone, pass));
+            new User(fN, lN, a, e, phone, pass);
             fileClass.FileWriteUser();
             openMainActivity();
         }

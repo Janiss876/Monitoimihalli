@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyReservationsActivity extends AppCompatActivity {
@@ -37,7 +38,7 @@ public class MyReservationsActivity extends AppCompatActivity {
     }
     public void showMyreservations () {
         myReservationsText.setText("");
-        List<String> optionsList = new Arraylist<String>();
+        List<String> optionsList = new ArrayList<String>();
         for (Reservation r : Reservation.reservations) {
             if (r.getEmail().equals(User.activeUser.getEmail())) {
                 String dt = r.getDate();

@@ -1,7 +1,5 @@
 package com.example.monitoimihalli;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +12,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
+import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
+import java.util.List;
 
 public class MakeActivity extends AppCompatActivity {
 
@@ -32,10 +30,15 @@ public class MakeActivity extends AppCompatActivity {
     TextView warningText;
     MakeActivity context = null;
     Reservation reservation = new Reservation();
-    String place;
+    Place place = new Place();
+    Room room = new Room();
+    String placeName;
     String sport;
-    String room;
+    String roomNumber;
     String hours;
+    List<String> placeOptions;
+    List<String> roomOptions;
+    List<String> sportOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +52,16 @@ public class MakeActivity extends AppCompatActivity {
         chosenDate.addTextChangedListener(makeTextWatcher);
         confirmReservation = (Button) findViewById((R.id.ConfirmReservation));
 
-        Spinner spinnerplace = findViewById(R.id.spinnerplace);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.place, android.R.layout.simple_spinner_item);
+        getSpinnerOptions();
+
+        spinnerplace = findViewById(R.id.spinnerplace);
+        ArrayAdapter<String> adapter = new  ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, placeOptions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerplace.setAdapter(adapter);
         spinnerplace.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                place = parent.getItemAtPosition(position).toString();
+                placeName = parent.getItemAtPosition(position).toString();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -64,8 +69,25 @@ public class MakeActivity extends AppCompatActivity {
             }
         });
 
-        Spinner spinnersport = findViewById(R.id.spinnersport);
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.sport, android.R.layout.simple_spinner_item);
+
+        spinnerroom = findViewById(R.id.spinnerroom);
+        ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, roomOptions);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerroom.setAdapter(adapter2);
+        spinnerroom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                roomNumber = parent.getItemAtPosition(position).toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        spinnersport = findViewById(R.id.spinnersport);
+        ArrayAdapter<CharSequence> adapter1 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, sportOptions);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnersport.setAdapter(adapter1);
         spinnersport.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -79,22 +101,7 @@ public class MakeActivity extends AppCompatActivity {
             }
         });
 
-        Spinner spinnerroom = findViewById(R.id.spinnerroom);
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.room, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerroom.setAdapter(adapter2);
-        spinnerroom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                room = parent.getItemAtPosition(position).toString();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        Spinner spinnerhours = findViewById(R.id.spinnerhours);
+        spinnerhours = findViewById(R.id.spinnerhours);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.hours, android.R.layout.simple_spinner_item);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerhours.setAdapter(adapter3);
@@ -142,25 +149,13 @@ public class MakeActivity extends AppCompatActivity {
             }
         });
 
-
-    }/**
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT);
     }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }**/
 
     public void makeNewReservation() {
         FileClass fileClass = new FileClass(this);
-        String pl = place;
+        String pl = placeName;
         String sp = sport;
-        String rm = room;
+        String rm = roomNumber;
         String hs = hours;
         String dt = chosenDate.getText().toString();
         String fn = User.activeUser.getFirstName();
@@ -169,12 +164,24 @@ public class MakeActivity extends AppCompatActivity {
         if (reservation.reservationCheck(dt, hs, rm)) {
             warningText.setText("Room, date and hours already reserved, select another room/date/hours");
         } else {
-            Reservation.reservations.add(new Reservation(rm, pl, dt, hs, sp, fn, ln, em));
+            new Reservation(rm, pl, dt, hs, sp, fn, ln, em);
             fileClass.FileWriteReservation();
             openReservationActivity();
-
         }
+    }
 
+    public void getSpinnerOptions() {
+        if (Place.placeArray.size() == 0) {
+            new Place("Skinnarilankatu 100", "Sports Hall", 3);
+        }
+        placeOptions = place.getPlaceOptions();
+        if (Room.roomArray.size() ==0) {
+            for (int i = 1; i <= Place.placeArray.get(0).getNumberOfRooms(); i++) {
+                new Room(String.valueOf(i), Place.placeArray.get(0).getName());
+            }
+        }
+        roomOptions = room.getRoomOptions();
+        sportOptions = room.getAvailableSports();
     }
 
     public void openReservationActivity() {

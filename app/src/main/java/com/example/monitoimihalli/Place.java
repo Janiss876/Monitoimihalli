@@ -1,20 +1,41 @@
 package com.example.monitoimihalli;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Place {
+
     private String placeAddress;
-    private String Name;
-    private int NumberOfRooms;
+    private String name;
+    private int numberOfRooms;
+    public static ArrayList<Place> placeArray = new ArrayList<>();
 
-    public void setAddress(String Address) {
-        placeAddress=Address;
-
-    }
-    public String getAddress() {
-        return placeAddress;
-    }
-    public void setName(String Name){
-
+    public Place(String addr, String nm, int nor) {
+        placeAddress = addr;
+        name = nm;
+        numberOfRooms = nor;
+        placeArray.add(this);
     }
 
+    public Place() {
 
+    }
+
+    public List<String> getPlaceOptions() {
+        List<String> placeOptions = new ArrayList<>();
+        for (Place p : placeArray) {
+            placeOptions.add(p.getName());
+        }
+        return placeOptions;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getNumberOfRooms() {
+        return numberOfRooms;
+    }
 }
+
+

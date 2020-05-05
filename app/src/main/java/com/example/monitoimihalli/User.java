@@ -20,6 +20,7 @@ public class User {
         emailAddress = email;
         phoneNumber = phone;
         password = pass;
+        user_array.add(this);
     }
 
     public User() {
@@ -61,9 +62,9 @@ public class User {
     }
 
     public boolean loginCheck(String em, String pw) {
-        for (int i = 0; i < User.user_array.size(); i++) {
-            if (em.equals(User.user_array.get(i).getEmail()) && pw.equals(User.user_array.get(i).getPassword())) {
-                activeUser = User.user_array.get(i);
+        for (int i = 0; i < user_array.size(); i++) {
+            if (em.equals(user_array.get(i).getEmail()) && pw.equals(user_array.get(i).getPassword())) {
+                activeUser = user_array.get(i);
                 return true;
             }
         }

@@ -24,6 +24,7 @@ public class Reservation {
         firstName = f;
         lastName = l;
         email = e;
+        reservations.add(this);
     }
 
     public Reservation() {
