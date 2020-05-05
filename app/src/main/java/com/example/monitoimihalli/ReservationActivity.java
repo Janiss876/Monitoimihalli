@@ -12,6 +12,7 @@ public class ReservationActivity extends AppCompatActivity {
     Button checkReservationsButton;
     Button editButton;
     Button logOutButton;
+    Button showMyReservations;
 
 
     @Override
@@ -21,7 +22,8 @@ public class ReservationActivity extends AppCompatActivity {
         makeReservationButton = (Button) findViewById(R.id.makeReservation);
         editButton = (Button) findViewById(R.id.editButton);
         logOutButton = (Button) findViewById(R.id.logOutButton);
-        checkReservationsButton = (Button) findViewById(R.id.checkReservations);
+        checkReservationsButton = (Button) findViewById(R.id.checkAllReservations);
+        showMyReservations = (Button) findViewById(R.id.showMyreservations);
 
         makeReservationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +49,13 @@ public class ReservationActivity extends AppCompatActivity {
                 opencheckReservations();
             }
         });
+
+        showMyReservations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMyReservations();
+            }
+        });
     }
 
     public void openDetailsActivity() {
@@ -62,6 +71,9 @@ public class ReservationActivity extends AppCompatActivity {
         startActivity(new Intent(ReservationActivity.this, MainActivity.class));
     }
     public void opencheckReservations() {
-        startActivity(new Intent(ReservationActivity.this, CheckReservationsActivity.class));
+        startActivity(new Intent(ReservationActivity.this, CheckAllReservationsActivity.class));
+    }
+    public void openMyReservations() {
+        startActivity(new Intent(ReservationActivity.this, MyReservationsActivity.class));
     }
 }
