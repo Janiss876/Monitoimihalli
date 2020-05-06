@@ -107,5 +107,3 @@ public class FileClass {
         }
     }
 }
-//2,Sports Hall,9/5/2020,12-14,Floorball,Matti,Mattila,matti@gmail.com,fb,20,Matti Mattila/Jorma Jormala
-//String r, String p, String dt, String h, String s, String f, String l, String e, String dc)

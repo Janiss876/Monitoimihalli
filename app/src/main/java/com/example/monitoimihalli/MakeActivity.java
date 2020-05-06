@@ -170,7 +170,6 @@ public class MakeActivity extends AppCompatActivity {
         } else {
             Reservation r = new Reservation(rm, pl, dt, hs, sp, fn, ln, em, dc);
             r.addParticipant(User.activeUser.getFirstName() + " " + User.activeUser.getLastName());
-            r.addParticipant("Jorma" + " " + "Jormala");
             fileClass.FileWriteReservation();
             openReservationActivity();
         }
