@@ -84,7 +84,7 @@
         android:id="@+id/textViewHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Make a reservation"
+        android:text="Edit a reservation"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/spinnerplaceEdit"
         app:layout_constraintEnd_toEndOf="parent"
