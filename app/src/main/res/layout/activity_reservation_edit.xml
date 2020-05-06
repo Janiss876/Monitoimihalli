@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <Spinner
-        android:id="@+id/spinnerroom"
+        android:id="@+id/spinnerroomEdit"
         android:layout_width="293dp"
         android:layout_height="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,7 +15,7 @@
         app:layout_constraintVertical_bias="0.348" />
 
     <Spinner
-        android:id="@+id/spinnerhours"
+        android:id="@+id/spinnerhoursEdit"
         android:layout_width="293dp"
         android:layout_height="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +25,7 @@
         app:layout_constraintVertical_bias="0.75" />
 
     <Spinner
-        android:id="@+id/spinnersport"
+        android:id="@+id/spinnersportEdit"
         android:layout_width="293dp"
         android:layout_height="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +35,7 @@
         app:layout_constraintVertical_bias="0.50" />
 
     <Spinner
-        android:id="@+id/spinnerplace"
+        android:id="@+id/spinnerplaceEdit"
         android:layout_width="293dp"
         android:layout_height="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,11 +45,11 @@
         app:layout_constraintVertical_bias="0.198" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewPlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose place"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerplace"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerplaceEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,11 +57,11 @@
         app:layout_constraintVertical_bias="0.885" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewSport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose sport"
-        app:layout_constraintBottom_toTopOf="@+id/spinnersport"
+        app:layout_constraintBottom_toTopOf="@+id/spinnersportEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +69,7 @@
         app:layout_constraintVertical_bias="0.943" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewRoom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose room"
@@ -82,23 +81,23 @@
         app:layout_constraintVertical_bias="0.30" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Make a reservation"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerplace"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerplaceEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.254" />
 
     <Button
-        android:id="@+id/ConfirmReservation"
+        android:id="@+id/ConfirmEditButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="Confirm"
+        android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.26"
@@ -107,7 +106,7 @@
         app:layout_constraintVertical_bias="0.932" />
 
     <Button
-        android:id="@+id/CancelReservation"
+        android:id="@+id/CancelEditButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="58dp"
@@ -120,7 +119,7 @@
         app:layout_constraintVertical_bias="0.923" />
 
     <Button
-        android:id="@+id/ChooseDateButton"
+        android:id="@+id/ChooseDateButtonEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose date"
@@ -132,19 +131,19 @@
         app:layout_constraintVertical_bias="0.62" />
 
     <TextView
-        android:id="@+id/chosenDate"
+        android:id="@+id/chosenDateEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="(Chosen date)"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toEndOf="@+id/ChooseDateButton"
+        app:layout_constraintStart_toEndOf="@+id/ChooseDateButtonEdit"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.62" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose hours"
@@ -156,7 +155,7 @@
         app:layout_constraintVertical_bias="0.70" />
 
     <TextView
-        android:id="@+id/reservationWarningText"
+        android:id="@+id/reservationWarningTextEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="22dp"
@@ -170,7 +169,7 @@
         app:layout_constraintVertical_bias="0.085" />
 
     <EditText
-        android:id="@+id/descriptionText"
+        android:id="@+id/descriptionTextEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

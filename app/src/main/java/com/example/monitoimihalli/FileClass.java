@@ -57,10 +57,17 @@ public class FileClass {
     public void FileWriteReservation() {
         try {
             fileName = "reservationfile.csv";
-            header = "room number,place,date,hours,sport,first name,last name,email\n";
+            header = "room number,place,date,hours,sport,first name,last name,email,description,max paricipants,participants\n";
             OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput(fileName, Context.MODE_PRIVATE));
             osw.write(header);
             for (Reservation r : Reservation.reservations) {
+                String ps = "";
+                for (User u : r.participantsArray)
+                    if (r.getEmail().equals(r.participantsArray.get(r.participantsArray.size() - 1).getEmail())) {
+                        ps = ps + u.getFirstName() + " " + u.getLastName() + "\n";
+                    } else {
+                        ps = ps + u.getFirstName() + " " + u.getLastName() + "/";
+                    }
                 osw.write(r.getRoomNumber() + ",");
                 osw.write(r.getPlace() + ",");
                 osw.write(r.getDate() + ",");
@@ -68,14 +75,17 @@ public class FileClass {
                 osw.write(r.getSport() + ",");
                 osw.write(r.getFirstName()+ ",");
                 osw.write(r.getLastName() + ",");
-                osw.write(r.getEmail() + "\n");
+                osw.write(r.getEmail() + ",");
+                osw.write(r.getDescription() + ",");
+                osw.write(r.getMaxParticipants() + ",");
+                osw.write(ps);
             }
             osw.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
-
+    //kesken
     public void fileReadReservation() {
         try {
             fileName = "reservationfile.csv";
@@ -85,7 +95,7 @@ public class FileClass {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] linea = line.split(",");
-                Reservation.reservations.add(new Reservation(linea[0], linea[1], linea[2], linea[3], linea[4], linea[5], linea[6], linea[7]));
+                //Reservation.reservations.add(new Reservation(linea[0], linea[1], linea[2], linea[3], linea[4], linea[5], linea[6], linea[7]);
             }
             stream.close();
         } catch (IOException ex) {

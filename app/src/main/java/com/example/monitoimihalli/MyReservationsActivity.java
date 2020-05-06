@@ -55,5 +55,5 @@ public class MyReservationsActivity extends AppCompatActivity {
             myReservationsText.setText("You have no reservations");
         }
     }
-    }
+}
 

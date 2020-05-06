@@ -12,18 +12,24 @@ public class Reservation {
     private String firstName;
     private String lastName;
     private String email;
+    private int maxParticipants = 20;
+    private String description;
+    ArrayList<User> participantsArray = new ArrayList<User>();
+
+    public static Reservation editingReservation;
 
     public static ArrayList<Reservation> reservations = new ArrayList<>();
 
-    public Reservation(String r, String p, String d, String h, String s, String f, String l, String e) {
+    public Reservation(String r, String p, String dt, String h, String s, String f, String l, String e, String dc) {
         roomNumber = r;
         place = p;
-        date = d;
+        date = dt;
         hours = h;
         sport = s;
         firstName = f;
         lastName = l;
         email = e;
+        description = dc;
         reservations.add(this);
     }
 
@@ -38,6 +44,10 @@ public class Reservation {
             }
         }
         return false;
+    }
+
+    public void addParticipant(User u) {
+        participantsArray.add(u);
     }
 
     public String getRoomNumber() {
@@ -72,8 +82,15 @@ public class Reservation {
         return email;
     }
 
+    public int getMaxParticipants() {
+        return maxParticipants;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     public void editReservation() {
 
     }
-
 }

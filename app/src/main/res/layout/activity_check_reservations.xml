@@ -87,10 +87,10 @@
         app:layout_constraintVertical_bias="0.722" />
 
     <Button
-        android:id="@+id/JointoReservation"
+        android:id="@+id/JoinReservation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Join to a reservation"
+        android:text="Join the reservation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

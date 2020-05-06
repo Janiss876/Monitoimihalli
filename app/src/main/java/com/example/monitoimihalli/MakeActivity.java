@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import java.util.List;
 
 public class MakeActivity extends AppCompatActivity {
 
+    EditText descText;
     Button chooseDate;
     Button confirmReservation;
     Button cancelButton;
@@ -51,6 +53,7 @@ public class MakeActivity extends AppCompatActivity {
         chosenDate = (TextView) findViewById(R.id.chosenDate);
         chosenDate.addTextChangedListener(makeTextWatcher);
         confirmReservation = (Button) findViewById((R.id.ConfirmReservation));
+        descText = (EditText) findViewById(R.id.descriptionText);
 
         getSpinnerOptions();
 
@@ -161,10 +164,12 @@ public class MakeActivity extends AppCompatActivity {
         String fn = User.activeUser.getFirstName();
         String ln = User.activeUser.getLastName();
         String em = User.activeUser.getEmail();
+        String dc = descText.getText().toString();
         if (reservation.reservationCheck(dt, hs, rm)) {
             warningText.setText("Room, date and hours already reserved, select another room/date/hours");
         } else {
-            new Reservation(rm, pl, dt, hs, sp, fn, ln, em);
+            Reservation r = new Reservation(rm, pl, dt, hs, sp, fn, ln, em, dc);
+            r.addParticipant(User.activeUser);
             fileClass.FileWriteReservation();
             openReservationActivity();
         }
@@ -196,7 +201,7 @@ public class MakeActivity extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            confirmReservation.setEnabled(!chosenDate.getText().toString().equals(("Chosen date")));
+            confirmReservation.setEnabled(!chosenDate.getText().toString().equals("Chosen date"));
         }
 
         @Override
