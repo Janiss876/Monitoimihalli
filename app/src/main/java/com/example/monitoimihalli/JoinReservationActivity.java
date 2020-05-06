@@ -14,10 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 
-public class CheckAllReservationsActivity extends AppCompatActivity {
+public class JoinReservationActivity extends AppCompatActivity {
     Button chooseDate2;
-    Button showMyReservations;
-    Button showAllReservations;
     Spinner spinner_pickRoom;
     DatePickerDialog dtp2;
     TextView chosenDate2;
@@ -25,7 +23,7 @@ public class CheckAllReservationsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_check_reservations);
+        setContentView(R.layout.activity_join_reservation);
         chooseDate2= (Button) findViewById(R.id.chooseDate2);
         chosenDate2 = (TextView) findViewById(R.id.chosenDate2);
 
@@ -52,7 +50,7 @@ public class CheckAllReservationsActivity extends AppCompatActivity {
                 int month = c.get(Calendar.MONTH);
                 int year = c.get(Calendar.YEAR);
 
-                dtp2 = new DatePickerDialog(CheckAllReservationsActivity.this, new DatePickerDialog.OnDateSetListener() {
+                dtp2 = new DatePickerDialog(JoinReservationActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         chosenDate2.setText(day + "/" + (month + 1) + "/" + year);

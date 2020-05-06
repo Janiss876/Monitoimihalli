@@ -137,7 +137,7 @@ public class MakeActivity extends AppCompatActivity {
                 dtp = new DatePickerDialog(MakeActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        chosenDate.setText(day + "/" + (month + 1) + "/" + year);
+                        chosenDate.setText(year + "-" + (month + 1) + "-" + day);
                     }
                 }, year, month, day);
                 dtp.show();

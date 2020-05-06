@@ -90,7 +90,25 @@ public class Reservation {
         return description;
     }
 
-    public void editReservation() {
+    public void editReservation(String r, String p, String dt, String h, String s, String dc) {
+        editingReservation.roomNumber = r;
+        editingReservation.place = p;
+        editingReservation.date = dt;
+        editingReservation.hours = h;
+        editingReservation.sport = s;
+        editingReservation.description = dc;
+        editingReservation = null;
+        return;
+    }
 
+    public void deleteReservation() {
+        Reservation remRes = null;
+        for (Reservation r : reservations) {
+            if (r.getRoomNumber().equals(editingReservation.getRoomNumber()) && r.getPlace().equals(editingReservation.getPlace()) && r.getHours().equals(editingReservation.getHours())) {
+                remRes = r;
+                break;
+            }
+        }
+        reservations.remove(remRes);
     }
 }

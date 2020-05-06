@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ReservationEditActivity"></activity>
-        <activity android:name=".CheckAllReservationsActivity" />
+        <activity android:name=".JoinReservationActivity" />
         <activity android:name=".AccountDetailsActivity" />
         <activity android:name=".MyReservationsActivity" />
         <activity android:name=".MakeActivity" />

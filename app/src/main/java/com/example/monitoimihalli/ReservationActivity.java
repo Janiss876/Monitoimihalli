@@ -71,7 +71,7 @@ public class ReservationActivity extends AppCompatActivity {
         startActivity(new Intent(ReservationActivity.this, MainActivity.class));
     }
     public void opencheckReservations() {
-        startActivity(new Intent(ReservationActivity.this, CheckAllReservationsActivity.class));
+        startActivity(new Intent(ReservationActivity.this, JoinReservationActivity.class));
     }
     public void openMyReservations() {
         startActivity(new Intent(ReservationActivity.this, MyReservationsActivity.class));
