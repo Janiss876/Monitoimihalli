@@ -51,7 +51,7 @@ public class MyReservationsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectTheReservation();
-                myReservationsText.setText("ONNISTUI");
+                myReservationsText.setText("ONNISTUI!");
             }
         });
     }
