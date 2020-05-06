@@ -8,14 +8,14 @@
 
     <Spinner
         android:id="@+id/spinner_pickRoom"
-        android:layout_width="191dp"
-        android:layout_height="25dp"
+        android:layout_width="178dp"
+        android:layout_height="19dp"
         app:layout_constraintBottom_toTopOf="@+id/AllReservationsText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.795" />
+        app:layout_constraintVertical_bias="0.74" />
 
     <TextView
         android:id="@+id/textView7"
@@ -27,7 +27,7 @@
         app:layout_constraintHorizontal_bias="0.141"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.226" />
+        app:layout_constraintVertical_bias="0.168" />
 
     <Button
         android:id="@+id/chooseDate2"
@@ -36,10 +36,10 @@
         android:text="Choose date"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.575" />
+        app:layout_constraintVertical_bias="0.694" />
 
     <TextView
         android:id="@+id/chosenDate2"
@@ -48,15 +48,15 @@
         android:text="Chosen date"
         app:layout_constraintBottom_toTopOf="@+id/spinner_pickRoom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toEndOf="@+id/chooseDate2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintVertical_bias="0.663" />
 
     <TextView
         android:id="@+id/AllReservationsText"
-        android:layout_width="327dp"
-        android:layout_height="240dp"
+        android:layout_width="330dp"
+        android:layout_height="333dp"
         android:text="(tähän tulee yhden päivän ja yhden huoneen varaukset)"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,13 +67,13 @@
 
     <Spinner
         android:id="@+id/spinnerjoin"
-        android:layout_width="329dp"
-        android:layout_height="35dp"
+        android:layout_width="257dp"
+        android:layout_height="23dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AllReservationsText"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.556" />
 
     <TextView
         android:id="@+id/textView11"
@@ -95,7 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerjoin"
-        app:layout_constraintVertical_bias="0.514" />
+        app:layout_constraintVertical_bias="0.425" />
 
     <TextView
         android:id="@+id/textView12"
