@@ -19,6 +19,7 @@ public class MyReservationsActivity extends AppCompatActivity {
     TextView myReservationsText;
     Spinner spinnermyreservation;
     List<String> optionsList = new ArrayList<String>();
+    int selectedNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +32,13 @@ public class MyReservationsActivity extends AppCompatActivity {
 
         showMyreservations();
 
-        ArrayAdapter<String> adapter = new  ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, optionsList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, optionsList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnermyreservation.setAdapter(adapter);
         spinnermyreservation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                selectedNumber = Integer.parseInt(parent.getItemAtPosition(position).toString().substring(0, 1));
             }
 
             @Override
@@ -45,20 +46,29 @@ public class MyReservationsActivity extends AppCompatActivity {
 
             }
         });
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectTheReservation();
+                myReservationsText.setText("ONNISTUI");
+            }
+        });
     }
-    public void showMyreservations () {
+
+    public void showMyreservations() {
         myReservationsText.setText("");
         int numb = 0;
         for (Reservation r : Reservation.reservations) {
-            numb = numb + 1;
             if (r.getEmail().equals(User.activeUser.getEmail())) {
+                numb = numb + 1;
                 String dt = r.getDate();
                 String h = r.getHours();
                 String pl = r.getPlace();
                 String sp = r.getSport();
                 String rm = r.getRoomNumber();
                 myReservationsText.append(numb + ". " + "Date: " + dt + ", Time: " + h + ", Place: " + pl + ", Sport: " + sp + ", Room: " + rm + "\n" + "\n");
-                String info = numb + ". " + dt + ":" + h + ":" + pl + ":" + sp + ":" + rm;
+                String info = numb + ".";
                 optionsList.add(info);
             }
 
@@ -67,5 +77,16 @@ public class MyReservationsActivity extends AppCompatActivity {
             myReservationsText.setText("You have no reservations");
         }
     }
-}
 
+    public void selectTheReservation() {
+        int numb = 0;
+        for (Reservation r : Reservation.reservations) {
+            if (r.getEmail().equals(User.activeUser.getEmail())) {
+                numb = numb + 1;
+                if (numb == selectedNumber) {
+                    Reservation.editingReservation = r;
+                }
+            }
+        }
+    }
+}
