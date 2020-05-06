@@ -57,8 +57,8 @@ public class MyReservationsActivity extends AppCompatActivity {
                 String pl = r.getPlace();
                 String sp = r.getSport();
                 String rm = r.getRoomNumber();
-                myReservationsText.append(String.valueOf(numb)+ ". " + "Date: " + dt + ", Time: " + h + ", Place: " + pl + ", Sport: " + sp + ", Room: " + rm + "\n" + "\n");
-                String info = String.valueOf(numb) + ". " + dt + ":" + h + ":" + pl + ":" + sp + ":" + rm;
+                myReservationsText.append(numb + ". " + "Date: " + dt + ", Time: " + h + ", Place: " + pl + ", Sport: " + sp + ", Room: " + rm + "\n" + "\n");
+                String info = numb + ". " + dt + ":" + h + ":" + pl + ":" + sp + ":" + rm;
                 optionsList.add(info);
             }
 
