@@ -14,7 +14,7 @@ public class Reservation {
     private String email;
     private int maxParticipants = 20;
     private String description;
-    ArrayList<User> participantsArray = new ArrayList<User>();
+    ArrayList<String> participantsArray = new ArrayList<String>();
 
     public static Reservation editingReservation;
 
@@ -46,8 +46,8 @@ public class Reservation {
         return false;
     }
 
-    public void addParticipant(User u) {
-        participantsArray.add(u);
+    public void addParticipant(String fnln) {
+        participantsArray.add(fnln);
     }
 
     public String getRoomNumber() {

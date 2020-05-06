@@ -62,11 +62,11 @@ public class FileClass {
             osw.write(header);
             for (Reservation r : Reservation.reservations) {
                 String ps = "";
-                for (User u : r.participantsArray)
-                    if (r.getEmail().equals(r.participantsArray.get(r.participantsArray.size() - 1).getEmail())) {
-                        ps = ps + u.getFirstName() + " " + u.getLastName() + "\n";
+                for (String s : r.participantsArray)
+                    if (s.equals(r.participantsArray.get(r.participantsArray.size() - 1))) {
+                        ps = ps + s + "\n";
                     } else {
-                        ps = ps + u.getFirstName() + " " + u.getLastName() + "/";
+                        ps = ps + s + "/";
                     }
                 osw.write(r.getRoomNumber() + ",");
                 osw.write(r.getPlace() + ",");
@@ -85,7 +85,7 @@ public class FileClass {
             ex.printStackTrace();
         }
     }
-    //kesken
+
     public void fileReadReservation() {
         try {
             fileName = "reservationfile.csv";
@@ -95,7 +95,11 @@ public class FileClass {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] linea = line.split(",");
-                //Reservation.reservations.add(new Reservation(linea[0], linea[1], linea[2], linea[3], linea[4], linea[5], linea[6], linea[7]);
+                Reservation r = new Reservation(linea[0], linea[1], linea[2], linea[3], linea[4], linea[5], linea[6], linea[7], linea[8]);
+                String[] partc = linea[10].split("/");
+                for (String s : partc) {
+                    r.participantsArray.add(s);
+                }
             }
             stream.close();
         } catch (IOException ex) {
@@ -103,4 +107,5 @@ public class FileClass {
         }
     }
 }
-
+//2,Sports Hall,9/5/2020,12-14,Floorball,Matti,Mattila,matti@gmail.com,fb,20,Matti Mattila/Jorma Jormala
+//String r, String p, String dt, String h, String s, String f, String l, String e, String dc)

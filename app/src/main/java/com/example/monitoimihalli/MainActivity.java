@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         context = MainActivity.this;
         FileClass file = new FileClass(context);
         file.fileReadUser();
-        file.fileReadReservation();
+        //file.fileReadReservation();
         loginButton = (Button) findViewById(R.id.loginButton);
         registerButton = (Button) findViewById(R.id.registerButton);
         loginEmail = (EditText) findViewById(R.id.loginEmail);
