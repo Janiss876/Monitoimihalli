@@ -8,7 +8,7 @@
     <Spinner
         android:id="@+id/spinnerroom"
         android:layout_width="293dp"
-        android:layout_height="17dp"
+        android:layout_height="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +18,7 @@
     <Spinner
         android:id="@+id/spinnerhours"
         android:layout_width="293dp"
-        android:layout_height="17dp"
+        android:layout_height="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
     <Spinner
         android:id="@+id/spinnersport"
         android:layout_width="293dp"
-        android:layout_height="17dp"
+        android:layout_height="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
     <Spinner
         android:id="@+id/spinnerplace"
         android:layout_width="293dp"
-        android:layout_height="17dp"
+        android:layout_height="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
