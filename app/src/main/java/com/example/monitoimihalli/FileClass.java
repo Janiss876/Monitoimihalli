@@ -17,6 +17,7 @@ public class FileClass {
         context = con.getApplicationContext();
     }
 
+    //writes all users to usefile. This happens when new user is created or existing user updated
     public void fileWriteUser() {
             try {
                 fileName = "userfile.csv";
@@ -37,7 +38,7 @@ public class FileClass {
             }
     }
 
-
+    //Reads users from userfile and adds them to user_array. This happens when you start the app.
     public void fileReadUser() {
         try {
             fileName = "userfile.csv";
@@ -54,6 +55,7 @@ public class FileClass {
                 ex.printStackTrace();
         }
     }
+    //writes all reservations to reservationfile. This happens when new reservation is created or existing reservation updated/deleted
     public void fileWriteReservation() {
         try {
             fileName = "reservationfile.csv";
@@ -88,7 +90,7 @@ public class FileClass {
             ex.printStackTrace();
         }
     }
-
+    //Reads reservation from reservationfile and adds them to reservations arraylist. This happens when you start the app.
     public void fileReadReservation() {
         try {
             fileName = "reservationfile.csv";

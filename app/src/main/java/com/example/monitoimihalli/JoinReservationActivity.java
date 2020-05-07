@@ -153,6 +153,10 @@ public class JoinReservationActivity extends AppCompatActivity {
         roomOptions = room.getRoomOptions();
     }
 
+    /** Shows all 6 possible reservation times of the date, place and room.
+     If there are reservations, info is shown about them, otherwise the row says Free.
+    This method also gets the options for the spinner that you use to select which reservation
+     you want to join. If all possible reservation times are free, there are no options**/
     public void checkSelected() {
         joinableList.clear();
         reservationsText.setText("");
@@ -191,6 +195,7 @@ public class JoinReservationActivity extends AppCompatActivity {
         }
     }
 
+    //Adds active user's name to participants of a reservation based on their choice
     public void joinTheReservation() {
         FileClass fileClass = new FileClass(this);
         Reservation joiningReservation = null;
@@ -210,7 +215,7 @@ public class JoinReservationActivity extends AppCompatActivity {
 
     }
 
-
+    //The TextWatchers make sure that user can't press a button when he hasn't selected everything that they need
     private TextWatcher checkTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -236,7 +241,7 @@ public class JoinReservationActivity extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            selectJoinButton.setEnabled(!chosenDate2.getText().toString().equals(""));
+            selectJoinButton.setEnabled(joinableList.size() != 0);
         }
 
         @Override

@@ -72,6 +72,7 @@ public class AccountDetailsActivity extends AppCompatActivity {
         startActivity(new Intent(AccountDetailsActivity.this, WelcomeActivity.class));
     }
 
+    // Edits user details based on user's wishes. Updates user_array and userfile accordingly
     public void editUser() {
         FileClass fileClass = new FileClass(this);
         String fN = firstNameText.getText().toString();
@@ -88,6 +89,8 @@ public class AccountDetailsActivity extends AppCompatActivity {
             openReservationActivity();
         }
     }
+
+    //Makes sure you can only press edit if all fields are not empty
     private TextWatcher detailsTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
