@@ -83,8 +83,8 @@ public class MyReservationsActivity extends AppCompatActivity {
                 if (reservationDate.after(dateNow)) {
                     numb = numb + 1;
                     myReservationsText.append(numb + ". " + "Date: " + dt + ", Time: " + h + ", Place: " + pl + ", Sport: " + sp + ", Room: " + rm + "\n" + "\n");
-                    String info = numb + ".";
-                    optionsList.add(info);
+                    String choice = numb + ".";
+                    optionsList.add(choice);
                 }
             }
         }

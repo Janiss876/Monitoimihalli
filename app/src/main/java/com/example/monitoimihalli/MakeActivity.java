@@ -169,7 +169,6 @@ public class MakeActivity extends AppCompatActivity {
             warningText.setText("Room, date and hours already reserved, select another room/date/hours");
         } else {
             Reservation r = new Reservation(rm, pl, dt, hs, sp, fn, ln, em, dc);
-            r.addParticipant(User.activeUser.getFirstName() + " " + User.activeUser.getLastName());
             fileClass.FileWriteReservation();
             openReservationActivity();
         }
