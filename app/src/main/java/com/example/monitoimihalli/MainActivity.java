@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         context = MainActivity.this;
         FileClass file = new FileClass(context);
         file.fileReadUser();            //Gets existing users from a csv file
-        file.fileReadReservation();     //Gets existing reservations from a csv file
+        //file.fileReadReservation();     //Gets existing reservations from a csv file
         loginButton = (Button) findViewById(R.id.loginButton);
         registerButton = (Button) findViewById(R.id.registerButton);
         loginEmail = (EditText) findViewById(R.id.loginEmail);
