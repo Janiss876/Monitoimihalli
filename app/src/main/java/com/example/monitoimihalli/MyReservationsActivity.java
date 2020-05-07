@@ -82,7 +82,7 @@ public class MyReservationsActivity extends AppCompatActivity {
                 String rm = r.getRoomNumber();
                 Date reservationDate = Date.valueOf(dt);
                 Date dateNow = Date.valueOf(String.valueOf(LocalDate.now()));
-                if (reservationDate.after(dateNow)) {
+                if (reservationDate.after(dateNow)) {                       //shows the reservations from today
                     numb = numb + 1;
                     myReservationsText.append(numb + ". " + "Date: " + dt + ", Time: " + h + ", Place: " + pl + ", Sport: " + sp + ", Room: " + rm + "\n-------------------------------------\n");
                     String choice = numb + ".";
@@ -96,9 +96,9 @@ public class MyReservationsActivity extends AppCompatActivity {
     }
 
     public void editTheReservation() {
-        int numb = 0;
+        int numb = 0;                                                                   //number is for knowing which reservation user wants to edit
         for (Reservation r : Reservation.reservations) {
-            if (r.getEmail().equals(User.activeUser.getEmail())) {
+            if (r.getEmail().equals(User.activeUser.getEmail())) {                      //choses the reservations that activeuser has done by comparing emails
                 numb = numb + 1;
                 if (numb == selectedNumber) {
                     Reservation.editingReservation = r;
