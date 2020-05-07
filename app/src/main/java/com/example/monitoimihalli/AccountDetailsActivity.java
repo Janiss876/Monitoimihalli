@@ -81,7 +81,7 @@ public class AccountDetailsActivity extends AppCompatActivity {
         String e = emailText.getText().toString();
         String phone = phoneText.getText().toString();
         String pass = passwordText.getText().toString();
-        if (user.checkEmail(e)) {
+        if (user.checkEmailEdit(e)) {
             warningText.setText("The email is already in use");
         } else {
             user.detailChange(fN, lN, a, e, phone, pass);

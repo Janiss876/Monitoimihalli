@@ -61,6 +61,17 @@ public class User {
         }
         return false;
     }
+
+    //email check when editing user details
+    public boolean checkEmailEdit(String em) {
+        for (User u : user_array) {
+            if (u.emailAddress.equals(em) && !em.equals(activeUser.getEmail())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //checks if email matches with password
     public boolean loginCheck(String em, String pw) {
         for (int i = 0; i < user_array.size(); i++) {
