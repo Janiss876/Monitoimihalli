@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyReservationsActivity extends AppCompatActivity {
+    MyReservationsActivity context = null;
     Button delete;
     Button edit;
     TextView myReservationsText;
@@ -30,6 +31,7 @@ public class MyReservationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myreservations);
 
+        context = MyReservationsActivity.this;
         delete = (Button) findViewById((R.id.DeleteButton));
         edit = (Button) findViewById(R.id.editMyReservation);
         myReservationsText = (TextView) findViewById(R.id.myReservationsText);
@@ -82,7 +84,7 @@ public class MyReservationsActivity extends AppCompatActivity {
                 Date dateNow = Date.valueOf(String.valueOf(LocalDate.now()));
                 if (reservationDate.after(dateNow)) {
                     numb = numb + 1;
-                    myReservationsText.append(numb + ". " + "Date: " + dt + ", Time: " + h + ", Place: " + pl + ", Sport: " + sp + ", Room: " + rm + "\n" + "\n");
+                    myReservationsText.append(numb + ". " + "Date: " + dt + ", Time: " + h + ", Place: " + pl + ", Sport: " + sp + ", Room: " + rm + "\n-------------------------------------\n");
                     String choice = numb + ".";
                     optionsList.add(choice);
                 }
@@ -107,6 +109,7 @@ public class MyReservationsActivity extends AppCompatActivity {
     }
 
     public void deleteTheReservation() {
+        FileClass fileClass = new FileClass(this);
         int numb = 0;
         for (Reservation r : Reservation.reservations) {
             if (r.getEmail().equals(User.activeUser.getEmail())) {
@@ -118,6 +121,7 @@ public class MyReservationsActivity extends AppCompatActivity {
             }
         }
         reservation.deleteReservation();
-        startActivity(new Intent(MyReservationsActivity.this, ReservationActivity.class));
+        fileClass.FileWriteReservation();
+        startActivity(new Intent(MyReservationsActivity.this, WelcomeActivity.class));
     }
 }

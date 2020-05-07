@@ -189,7 +189,7 @@ public class MakeActivity extends AppCompatActivity {
     }
 
     public void openReservationActivity() {
-        startActivity(new Intent(MakeActivity.this, ReservationActivity.class));
+        startActivity(new Intent(MakeActivity.this, WelcomeActivity.class));
     }
 
     private TextWatcher makeTextWatcher = new TextWatcher() {

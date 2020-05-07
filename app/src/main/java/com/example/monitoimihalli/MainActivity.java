@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     public void openReservationActivity() {
         User user = new User();
         if (user.loginCheck(loginEmail.getText().toString(), loginPassword.getText().toString())) {
-            startActivity(new Intent(MainActivity.this, ReservationActivity.class));
+            startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
             }
             else {
                 wrongText.setText("Wrong email and/or password");

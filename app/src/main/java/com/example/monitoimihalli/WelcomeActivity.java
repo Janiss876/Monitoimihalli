@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ReservationActivity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
     Button makeReservationButton;
     Button checkReservationsButton;
     Button editButton;
@@ -18,7 +18,7 @@ public class ReservationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reservation);
+        setContentView(R.layout.activity_welcome);
         makeReservationButton = (Button) findViewById(R.id.makeReservation);
         editButton = (Button) findViewById(R.id.editButton);
         logOutButton = (Button) findViewById(R.id.logOutButton);
@@ -59,21 +59,21 @@ public class ReservationActivity extends AppCompatActivity {
     }
 
     public void openDetailsActivity() {
-        startActivity(new Intent(ReservationActivity.this, AccountDetailsActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, AccountDetailsActivity.class));
     }
 
     public void openMakeActivity() {
-        startActivity(new Intent(ReservationActivity.this, MakeActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, MakeActivity.class));
     }
 
     public void logOut() {
         User.activeUser = null;
-        startActivity(new Intent(ReservationActivity.this, MainActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
     }
     public void opencheckReservations() {
-        startActivity(new Intent(ReservationActivity.this, JoinReservationActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, JoinReservationActivity.class));
     }
     public void openMyReservations() {
-        startActivity(new Intent(ReservationActivity.this, MyReservationsActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, MyReservationsActivity.class));
     }
 }

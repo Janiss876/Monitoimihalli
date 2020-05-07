@@ -111,4 +111,8 @@ public class Reservation {
         }
         reservations.remove(remRes);
     }
+
+    public void joinReservation(Reservation r) {
+        r.participantsArray.add(User.activeUser.getFirstName() + " " + User.activeUser.getLastName());
+    }
 }

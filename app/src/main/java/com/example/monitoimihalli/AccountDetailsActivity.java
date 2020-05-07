@@ -69,7 +69,7 @@ public class AccountDetailsActivity extends AppCompatActivity {
     }
 
     public void openReservationActivity() {
-        startActivity(new Intent(AccountDetailsActivity.this, ReservationActivity.class));
+        startActivity(new Intent(AccountDetailsActivity.this, WelcomeActivity.class));
     }
 
     public void editUser() {

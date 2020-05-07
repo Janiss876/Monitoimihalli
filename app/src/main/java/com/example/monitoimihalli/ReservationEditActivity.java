@@ -235,7 +235,7 @@ public class ReservationEditActivity extends AppCompatActivity {
     }
 
     public void openReservationsActivity() {
-        startActivity(new Intent(ReservationEditActivity.this, ReservationActivity.class));
+        startActivity(new Intent(ReservationEditActivity.this, WelcomeActivity.class));
     }
 
     private TextWatcher makeTextWatcher = new TextWatcher() {

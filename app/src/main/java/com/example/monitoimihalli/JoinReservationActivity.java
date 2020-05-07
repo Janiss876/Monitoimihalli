@@ -1,6 +1,7 @@
 package com.example.monitoimihalli;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -19,6 +20,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class JoinReservationActivity extends AppCompatActivity {
+    JoinReservationActivity context = null;
     Button chooseDate2;
     Button checkButton;
     Button selectJoinButton;
@@ -30,8 +32,10 @@ public class JoinReservationActivity extends AppCompatActivity {
     TextView chosenDate2;
     String pickedRoom;
     String pickedPlace;
+    String pickedTime;
     Place place = new Place();
     Room room = new Room();
+    Reservation reservation = new Reservation();
     List<String> placeOptions;
     List<String> roomOptions;
     List<String> joinableList = new ArrayList<String>();
@@ -40,13 +44,14 @@ public class JoinReservationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_reservation);
-
+        context = JoinReservationActivity.this;
         chooseDate2 = (Button) findViewById(R.id.chooseDate2);
         checkButton = (Button) findViewById(R.id.checkButton);
         selectJoinButton = (Button) findViewById(R.id.JoinReservation);
         chosenDate2 = (TextView) findViewById(R.id.chosenDate2);
-        chosenDate2.addTextChangedListener(joinTextWatcher);
+        chosenDate2.addTextChangedListener(checkTextWatcher);
         reservationsText = (TextView) findViewById(R.id.AllReservationsText);
+        reservationsText.addTextChangedListener(joinTextWatcher);
 
         getSpinnerOptions();
 
@@ -66,7 +71,7 @@ public class JoinReservationActivity extends AppCompatActivity {
             }
         });
 
-        spinnerPickRoom = findViewById(R.id.spinner_pickRoom);
+        spinnerPickRoom = findViewById(R.id.spinner_pickRoom2);
         ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, roomOptions);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPickRoom.setAdapter(adapter2);
@@ -82,14 +87,14 @@ public class JoinReservationActivity extends AppCompatActivity {
             }
         });
 
-        spinnerJoin = findViewById(R.id.spinnerjoin);
-        ArrayAdapter<CharSequence> adapter3 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, joinableList);
+        spinnerJoin = findViewById(R.id.spinnerJoin);
+        final ArrayAdapter<CharSequence> adapter3 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, joinableList);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerJoin.setAdapter(adapter3);
         spinnerJoin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                pickedTime = parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -121,13 +126,14 @@ public class JoinReservationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkSelected();
+                adapter3.notifyDataSetChanged();
             }
         });
 
         selectJoinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                joinTheReservation();
             }
         });
     }
@@ -146,6 +152,7 @@ public class JoinReservationActivity extends AppCompatActivity {
     }
 
     public void checkSelected() {
+        joinableList.clear();
         reservationsText.setText("");
         ArrayList<String> daysTexts = new ArrayList<String>();
         daysTexts.add("Hours 10-12: Free ");
@@ -178,12 +185,31 @@ public class JoinReservationActivity extends AppCompatActivity {
             if (!s.substring(13, 17).equals("Free")) {
                 joinableList.add(s.substring(6, 11));
             }
-            reservationsText.append(s + "\n\n");
+            reservationsText.append(s + "\n-------------------------------------\n");
         }
     }
 
+    public void joinTheReservation() {
+        FileClass fileClass = new FileClass(this);
+        Reservation joiningReservation = null;
+        for (Reservation r : Reservation.reservations) {
+            if (r.getHours().equals(pickedTime) && r.getPlace().equals(pickedPlace) && r.getRoomNumber().equals(pickedRoom)) {
+                joiningReservation = r;
+            }
+        }
+        if (joiningReservation.getMaxParticipants() > joiningReservation.participantsArray.size()) {
+            reservation.joinReservation(joiningReservation);
+            fileClass.FileWriteReservation();
+            startActivity(new Intent(JoinReservationActivity.this, WelcomeActivity.class));
+        } else {
+            reservationsText.setText("MAXIMUM NUMBER OF PARTICIPANTS ALREADY JOINED");
+        }
 
-    private TextWatcher joinTextWatcher = new TextWatcher() {
+
+    }
+
+
+    private TextWatcher checkTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -199,6 +225,24 @@ public class JoinReservationActivity extends AppCompatActivity {
 
         }
     };
+
+    private TextWatcher joinTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            selectJoinButton.setEnabled(!chosenDate2.getText().toString().equals(""));
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+
 }
 
 

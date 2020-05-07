@@ -68,6 +68,9 @@ public class FileClass {
                     } else {
                         ps = ps + s + "/";
                     }
+                if (ps.equals("")) {
+                    ps = "none\n";
+                }
                 osw.write(r.getRoomNumber() + ",");
                 osw.write(r.getPlace() + ",");
                 osw.write(r.getDate() + ",");
@@ -96,9 +99,11 @@ public class FileClass {
             while ((line = br.readLine()) != null) {
                 String[] linea = line.split(",");
                 Reservation r = new Reservation(linea[0], linea[1], linea[2], linea[3], linea[4], linea[5], linea[6], linea[7], linea[8]);
-                String[] partc = linea[10].split("/");
-                for (String s : partc) {
-                    r.participantsArray.add(s);
+                if (!linea[10].equals("none")) {
+                    String[] partc = linea[10].split("/");
+                    for (String s : partc) {
+                        r.participantsArray.add(s);
+                    }
                 }
             }
             stream.close();
