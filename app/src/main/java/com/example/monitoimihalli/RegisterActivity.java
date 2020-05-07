@@ -66,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(new Intent(RegisterActivity.this, MainActivity.class));
     }
 
+    //Makes new user and updates user_array and userfile accordingly
     public void newUser() {
         FileClass fileClass = new FileClass(this);
         String fN = firstNameText.getText().toString();
@@ -78,10 +79,12 @@ public class RegisterActivity extends AppCompatActivity {
             existingEmail.setText("The email is already in use");
         } else {
             new User(fN, lN, a, e, phone, pass);
-            fileClass.FileWriteUser();
+            fileClass.fileWriteUser();
             openMainActivity();
         }
     }
+
+    //
     private TextWatcher registerTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {

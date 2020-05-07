@@ -17,7 +17,7 @@ public class FileClass {
         context = con.getApplicationContext();
     }
 
-    public void FileWriteUser() {
+    public void fileWriteUser() {
             try {
                 fileName = "userfile.csv";
                 header = "first Name,last name,address,email,phone number,password\n";
@@ -54,7 +54,7 @@ public class FileClass {
                 ex.printStackTrace();
         }
     }
-    public void FileWriteReservation() {
+    public void fileWriteReservation() {
         try {
             fileName = "reservationfile.csv";
             header = "room number,place,date,hours,sport,first name,last name,email,description,max paricipants,participants\n";

@@ -121,7 +121,7 @@ public class MyReservationsActivity extends AppCompatActivity {
             }
         }
         reservation.deleteReservation();
-        fileClass.FileWriteReservation();
+        fileClass.fileWriteReservation();
         startActivity(new Intent(MyReservationsActivity.this, WelcomeActivity.class));
     }
 }

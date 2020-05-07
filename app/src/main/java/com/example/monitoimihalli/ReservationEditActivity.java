@@ -207,7 +207,7 @@ public class ReservationEditActivity extends AppCompatActivity {
             warningText.setText("Room, date and hours already reserved, select another room/date/hours");
         } else {
             reservation.editReservation(rm, pl, dt, hs, sp, dc);
-            fileClass.FileWriteReservation();
+            fileClass.fileWriteReservation();
             openReservationsActivity();
         }
     }

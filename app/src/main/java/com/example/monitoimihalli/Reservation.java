@@ -46,9 +46,7 @@ public class Reservation {
         return false;
     }
 
-    public void addParticipant(String fnln) {
-        participantsArray.add(fnln);
-    }
+
 
     public String getRoomNumber() {
         return roomNumber;

@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = MainActivity.this;
         FileClass file = new FileClass(context);
-        file.fileReadUser();
-        file.fileReadReservation();
+        file.fileReadUser();            //Gets existing users from a csv file
+        file.fileReadReservation();     //Gets existing reservations from a csv file
         loginButton = (Button) findViewById(R.id.loginButton);
         registerButton = (Button) findViewById(R.id.registerButton);
         loginEmail = (EditText) findViewById(R.id.loginEmail);
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openReservationActivity();
+                openWelcomeActivity();
             }
         });
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
     public void openRegisterActivity() {
         startActivity(new Intent(MainActivity.this, RegisterActivity.class));
     }
-    public void openReservationActivity() {
+
+    //Checks if user gave right email and password
+    public void openWelcomeActivity() {
         User user = new User();
         if (user.loginCheck(loginEmail.getText().toString(), loginPassword.getText().toString())) {
             startActivity(new Intent(MainActivity.this, WelcomeActivity.class));

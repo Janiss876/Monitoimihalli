@@ -84,7 +84,7 @@ public class AccountDetailsActivity extends AppCompatActivity {
             warningText.setText("The email is already in use");
         } else {
             user.detailChange(fN, lN, a, e, phone, pass);
-            fileClass.FileWriteUser();
+            fileClass.fileWriteUser();
             openReservationActivity();
         }
     }

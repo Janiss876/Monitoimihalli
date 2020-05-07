@@ -201,7 +201,7 @@ public class JoinReservationActivity extends AppCompatActivity {
         }
         if (joiningReservation.getMaxParticipants() > joiningReservation.participantsArray.size()) {
             reservation.joinReservation(joiningReservation);
-            fileClass.FileWriteReservation();
+            fileClass.fileWriteReservation();
             startActivity(new Intent(JoinReservationActivity.this, WelcomeActivity.class));
         } else {
             reservationsText.setText("MAXIMUM NUMBER OF PARTICIPANTS ALREADY JOINED");
