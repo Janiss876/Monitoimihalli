@@ -60,7 +60,7 @@ public class User {
         }
         return false;
     }
-
+    //checks if email matches with password
     public boolean loginCheck(String em, String pw) {
         for (int i = 0; i < user_array.size(); i++) {
             if (em.equals(user_array.get(i).getEmail()) && pw.equals(user_array.get(i).getPassword())) {
@@ -70,7 +70,7 @@ public class User {
         }
         return false;
     }
-
+    //changes user details from AccountDetailsActivity
     public void detailChange(String fN, String lN, String addr, String email, String phone, String pass) {
         activeUser.firstName = fN;
         activeUser.lastName = lN;

@@ -36,7 +36,7 @@ public class Reservation {
     public Reservation() {
 
     }
-
+    //checks if reservation taken
     public boolean reservationCheck(String dt, String hs, String rm) {
         for (int i = 0; i < reservations.size(); i++) {
             if (dt.equals(reservations.get(i).getDate()) && hs.equals(reservations.get(i).getHours()) && rm.equals(reservations.get(i).getRoomNumber())) {
@@ -107,9 +107,10 @@ public class Reservation {
                 break;
             }
         }
-        reservations.remove(remRes);
+        reservations.remove(remRes); //removes a reservation from the list
     }
 
+    //activeuser can join to reservation as a participant ; his name adds to participant list to the certain reservation
     public void joinReservation(Reservation r) {
         r.participantsArray.add(User.activeUser.getFirstName() + " " + User.activeUser.getLastName());
     }

@@ -126,6 +126,7 @@ public class MakeActivity extends AppCompatActivity {
             }
         });
 
+        //calendar for choosing date
         chooseDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -167,15 +168,16 @@ public class MakeActivity extends AppCompatActivity {
         String ln = User.activeUser.getLastName();
         String em = User.activeUser.getEmail();
         String dc = descText.getText().toString();
-        if (reservation.reservationCheck(dt, hs, rm)) {
+        if (reservation.reservationCheck(dt, hs, rm)) {         //checks if reservation already taken
             warningText.setText("Room, date and hours already reserved, select another room/date/hours");
         } else {
-            Reservation r = new Reservation(rm, pl, dt, hs, sp, fn, ln, em, dc);
+            Reservation r = new Reservation(rm, pl, dt, hs, sp, fn, ln, em, dc);            //adds reservation
             fileClass.fileWriteReservation();
             openReservationActivity();
         }
     }
 
+    //adds place to spinnerlist
     public void getSpinnerOptions() {
         if (Place.placeArray.size() == 0) {
             new Place("Skinnarilankatu 100", "Sports Hall", 3);
