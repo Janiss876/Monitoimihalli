@@ -82,7 +82,7 @@ public class MyReservationsActivity extends AppCompatActivity {
                 String rm = r.getRoomNumber();
                 Date reservationDate = Date.valueOf(dt);
                 Date dateNow = Date.valueOf(String.valueOf(LocalDate.now()));
-                if (reservationDate.after(dateNow)) {                       //shows the reservations from today
+                if (reservationDate.after(dateNow)) {                   //shows the reservations that are in the future
                     numb = numb + 1;
                     myReservationsText.append(numb + ". " + "Date: " + dt + ", Time: " + h + ", Place: " + pl + ", Sport: " + sp + ", Room: " + rm + "\n-------------------------------------\n");
                     String choice = numb + ".";
@@ -96,9 +96,9 @@ public class MyReservationsActivity extends AppCompatActivity {
     }
 
     public void editTheReservation() {
-        int numb = 0;                                                                   //number is for knowing which reservation user wants to edit
+        int numb = 0;                                                       //number is for knowing which reservation user wants to edit
         for (Reservation r : Reservation.reservations) {
-            if (r.getEmail().equals(User.activeUser.getEmail())) {                      //choses the reservations that activeuser has done by comparing emails
+            if (r.getEmail().equals(User.activeUser.getEmail())) {          //choses the reservations that activeuser has done by comparing emails
                 numb = numb + 1;
                 if (numb == selectedNumber) {
                     Reservation.editingReservation = r;
@@ -108,6 +108,7 @@ public class MyReservationsActivity extends AppCompatActivity {
         }
     }
 
+    // Deletes the the reservation and updates the file and arraylist accordingly
     public void deleteTheReservation() {
         FileClass fileClass = new FileClass(this);
         int numb = 0;

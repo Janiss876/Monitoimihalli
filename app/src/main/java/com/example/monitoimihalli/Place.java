@@ -21,6 +21,7 @@ public class Place {
 
     }
 
+    //returns placeoptions for a spinner.
     public List<String> getPlaceOptions() {
         List<String> placeOptions = new ArrayList<>();
         for (Place p : placeArray) {

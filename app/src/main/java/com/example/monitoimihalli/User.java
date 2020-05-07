@@ -52,6 +52,7 @@ public class User {
         return phoneNumber;
     }
 
+    //Checks if one of the existing users already has the same email
     public boolean checkEmail(String em) {
         for (User u : user_array) {
             if (u.emailAddress.equals(em)) {

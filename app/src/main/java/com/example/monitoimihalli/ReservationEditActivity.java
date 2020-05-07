@@ -195,6 +195,7 @@ public class ReservationEditActivity extends AppCompatActivity {
         chosenDate.setText(Reservation.editingReservation.getDate());
     }
 
+
     public void editReservation() {
         FileClass fileClass = new FileClass(this);
         String pl = placeName;
@@ -212,6 +213,7 @@ public class ReservationEditActivity extends AppCompatActivity {
         }
     }
 
+    //gets options for the spinners. adds places and rooms if there aren't any in memory
     public void getSpinnerOptions() {
         if (Place.placeArray.size() == 0) {
             new Place("Skinnarilankatu 100", "Sports Hall", 3);
@@ -240,6 +242,7 @@ public class ReservationEditActivity extends AppCompatActivity {
         startActivity(new Intent(ReservationEditActivity.this, WelcomeActivity.class));
     }
 
+    //makes sure confirm button can only be pressed if even the date has been selected.
     private TextWatcher makeTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {

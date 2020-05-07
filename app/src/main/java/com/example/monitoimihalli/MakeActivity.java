@@ -177,7 +177,7 @@ public class MakeActivity extends AppCompatActivity {
         }
     }
 
-    //adds place to spinnerlist
+    //adds place/room/sport options to the spinners
     public void getSpinnerOptions() {
         if (Place.placeArray.size() == 0) {
             new Place("Skinnarilankatu 100", "Sports Hall", 3);
@@ -196,6 +196,7 @@ public class MakeActivity extends AppCompatActivity {
         startActivity(new Intent(MakeActivity.this, WelcomeActivity.class));
     }
 
+    // Makes sure confirm button can't be pressed if date hasn't been selected
     private TextWatcher makeTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {

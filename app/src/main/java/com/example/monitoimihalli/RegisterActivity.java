@@ -84,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    //
+    // Makes sure you only push registerButton if every field has been filled
     private TextWatcher registerTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
