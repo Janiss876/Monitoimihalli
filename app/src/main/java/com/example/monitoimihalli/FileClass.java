@@ -48,7 +48,7 @@ public class FileClass {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] linea = line.split(",");
-                User.user_array.add(new User(linea[0], linea[1], linea[2], linea[3], linea[4], linea[5]));
+                new User(linea[0], linea[1], linea[2], linea[3], linea[4], linea[5]);
             }
             stream.close();
         } catch (IOException ex) {
