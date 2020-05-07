@@ -161,7 +161,7 @@ public class ReservationEditActivity extends AppCompatActivity {
         });
 
     }
-
+    //Gets starting options for the spinners depending on which reservation user wants to edit
     public void startingOptions() {
         int placeNumb = -1;
         int roomNumb = -1;
@@ -195,7 +195,7 @@ public class ReservationEditActivity extends AppCompatActivity {
         chosenDate.setText(Reservation.editingReservation.getDate());
     }
 
-
+    //Edits user details according to what user selected.
     public void editReservation() {
         FileClass fileClass = new FileClass(this);
         String pl = placeName;
