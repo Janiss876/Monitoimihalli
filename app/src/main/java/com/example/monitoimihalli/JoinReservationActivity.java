@@ -117,6 +117,8 @@ public class JoinReservationActivity extends AppCompatActivity {
                         chosenDate2.setText(year + "-" + (month + 1) + "-" + day);
                     }
                 }, year, month, day);
+                dtp2.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                dtp2.getDatePicker().setMaxDate(System.currentTimeMillis() + 2 * 604800000);
                 dtp2.show();
 
             }

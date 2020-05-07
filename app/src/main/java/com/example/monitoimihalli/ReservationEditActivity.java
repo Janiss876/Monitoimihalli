@@ -146,6 +146,8 @@ public class ReservationEditActivity extends AppCompatActivity {
                         chosenDate.setText(day + "-" + (month + 1) + "-" + year);
                     }
                 }, year, month, day);
+                dtp.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                dtp.getDatePicker().setMaxDate(System.currentTimeMillis() + 2 * 604800000);
                 dtp.show();
 
             }

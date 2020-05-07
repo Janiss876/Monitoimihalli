@@ -140,6 +140,8 @@ public class MakeActivity extends AppCompatActivity {
                         chosenDate.setText(year + "-" + (month + 1) + "-" + day);
                     }
                 }, year, month, day);
+                dtp.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                dtp.getDatePicker().setMaxDate(System.currentTimeMillis() + 2 * 604800000);
                 dtp.show();
 
             }
