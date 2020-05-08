@@ -46,6 +46,19 @@ public class Reservation {
         return false;
     }
 
+    //time/place/room check for editing existing reservation
+    public boolean reservationCheckEdit(String dt, String hs, String rm) {
+        if (dt.equals(editingReservation.getDate()) && hs.equals(editingReservation.getHours()) && rm.equals(editingReservation.getRoomNumber())) {
+            return false;
+        }
+        for (int i = 0; i < reservations.size(); i++) {
+            if (dt.equals(reservations.get(i).getDate()) && hs.equals(reservations.get(i).getHours()) && rm.equals(reservations.get(i).getRoomNumber())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
     public String getRoomNumber() {

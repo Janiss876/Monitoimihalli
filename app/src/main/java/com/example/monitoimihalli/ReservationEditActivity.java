@@ -52,17 +52,16 @@ public class ReservationEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reservation_edit);
         context = ReservationEditActivity.this;
         cancelButton = (Button) findViewById(R.id.CancelEditButton);
-        warningText = (TextView) findViewById(R.id.ConfirmEditButton);
+        warningText = (TextView) findViewById(R.id.reservationWarningTextEdit);
         chooseDate = (Button) findViewById(R.id.ChooseDateButtonEdit);
         chosenDate = (TextView) findViewById(R.id.chosenDateEdit);
-        chosenDate.addTextChangedListener(makeTextWatcher);
         confirmReservationEdit = (Button) findViewById(R.id.ConfirmEditButton);
         descText = (EditText) findViewById(R.id.descriptionTextEdit);
 
         getSpinnerOptions();
 
         spinnerplace = findViewById(R.id.spinnerplaceEdit);
-        ArrayAdapter<String> adapter = new  ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, placeOptions);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, placeOptions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerplace.setAdapter(adapter);
         spinnerplace.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -70,6 +69,7 @@ public class ReservationEditActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 placeName = parent.getItemAtPosition(position).toString();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -86,6 +86,7 @@ public class ReservationEditActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 roomNumber = parent.getItemAtPosition(position).toString();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -102,6 +103,7 @@ public class ReservationEditActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 sport = parent.getItemAtPosition(position).toString();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -117,6 +119,7 @@ public class ReservationEditActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 hours = parent.getItemAtPosition(position).toString();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -161,6 +164,7 @@ public class ReservationEditActivity extends AppCompatActivity {
         });
 
     }
+
     //Gets starting options for the spinners depending on which reservation user wants to edit
     public void startingOptions() {
         int placeNumb = -1;
@@ -204,7 +208,7 @@ public class ReservationEditActivity extends AppCompatActivity {
         String hs = hours;
         String dt = chosenDate.getText().toString();
         String dc = descText.getText().toString();
-        if (reservation.reservationCheck(dt, hs, rm)) {
+        if (reservation.reservationCheckEdit(dt, hs, rm)) {
             warningText.setText("Room, date and hours already reserved, select another room/date/hours");
         } else {
             reservation.editReservation(rm, pl, dt, hs, sp, dc);
@@ -219,7 +223,7 @@ public class ReservationEditActivity extends AppCompatActivity {
             new Place("Skinnarilankatu 100", "Sports Hall", 3);
         }
         placeOptions = place.getPlaceOptions();
-        if (Room.roomArray.size() ==0) {
+        if (Room.roomArray.size() == 0) {
             for (int i = 1; i <= Place.placeArray.get(0).getNumberOfRooms(); i++) {
                 new Room(String.valueOf(i), Place.placeArray.get(0).getName());
             }
@@ -241,23 +245,5 @@ public class ReservationEditActivity extends AppCompatActivity {
     public void openReservationsActivity() {
         startActivity(new Intent(ReservationEditActivity.this, WelcomeActivity.class));
     }
-
-    //makes sure confirm button can only be pressed if even the date has been selected.
-    private TextWatcher makeTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            confirmReservationEdit.setEnabled(!chosenDate.getText().toString().equals("Chosen date"));
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-    };
 }
 
